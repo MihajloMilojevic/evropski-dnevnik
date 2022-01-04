@@ -1,0 +1,22 @@
+Udemy: https://www.udemy.com/
+username: milojevicm374@gmail.com
+password: Mihajlo123
+kurs: https://www.udemy.com/course/react-native-and-redux-course-using-hooks/learn/lecture/18170640#overview
+
+
+React Natie YT tutorial: https://www.youtube.com/watch?v=ANdSdIlgsEw
+React Hooks YT tutorial: https://www.youtube.com/watch?v=LlvBzyy-558
+
+Expo Docs: https://docs.expo.dev/
+React Native Docs: https://reactnative.dev/
+
+Node.js, Express, MongoDB... YT tutorial:
+part1: https://www.youtube.com/watch?v=TNV0_7QRDwY
+part2: https://www.youtube.com/watch?v=rltfdjcXjmk
+
+Node.js Docs: https://nodejs.org/en/docs/
+Express Docs: http://expressjs.com/
+Mongoose Docs: https://mongoosejs.com/docs/guide.html
+MongoDB Atlas: https://www.mongodb.com/atlas/database
+
+Mongo_URI: mongodb+srv://<username>:<password>@cluster0.ldgod.mongodb.net/<DataBaseName>?retryWrites=true&w=majority
