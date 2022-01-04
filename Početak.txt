@@ -1,0 +1,10 @@
+Pre početka treba u terminalu pokrenuti naredbu 
+		"npm install"
+Ona ce instalirati sve potrebne npm module koje se nalaze u package.json kao zavisnost
+
+Takođe u folderu server treba napraviti fajl 
+		".env"
+u fajlu "envPrimer.txt" nalazi se primer sadrzine .env fajla
+Umesto <ime> i <lozinka> u MONGO_URI potrebno je staviti korisnicko ime i lozinku koju je administrator napravio
+
+
