@@ -16,6 +16,7 @@
     "expo": "~44.0.0",
     "expo-status-bar": "~1.2.0",
     "express": "^4.17.2",
+    "express-async-errors": "^3.1.1",
     "http-status-codes": "^2.2.0",
     "mongoose": "^6.1.5",
     "react": "17.0.1",
