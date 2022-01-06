@@ -23,6 +23,7 @@ export default function Register() {
 			<Text>Email</Text>
 			<TextInput
 				style={styles.input}
+				keyboardType="email-address"
 				onChangeText={newEmail => {
 					setEmail(newEmail);
 				}}
@@ -30,6 +31,7 @@ export default function Register() {
 			<Text>Lozinka</Text>
 			<TextInput
 				style={styles.input}
+				secureTextEntry={true}
 				onChangeText={newPassword => {
 					setPassword(newPassword);
 				}}
