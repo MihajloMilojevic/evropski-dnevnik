@@ -1,53 +1,35 @@
 const User = require("../models/user")
 const StatusCodes = require("http-status-codes");
-const { CustomAPIError } = require('../errors');
-
-const getAllUsers = async(req, res) => {
-	const users = await User.find();
-	res.status(StatusCodes.OK).json({ok: true, users})
-}
+const { BadRequestError, UnauthenticatedError } = require('../errors')
 
 const login = async (req, res) => {
-	
+	const { email, password } = req.body;
+
+  if (!email ) {
+    throw new BadRequestError("Email je obavezan")
+  }
+
+  if (!password) {
+    throw new BadRequestError("Lozinka je obavezna")
+  }
+  const user = await User.findOne({ email })
+  if (!user) {
+    throw new UnauthenticatedError('Pogrešan email')
+  }
+  const isPasswordCorrect = await user.comparePassword(password)
+  if (!isPasswordCorrect) {
+    throw new UnauthenticatedError('Pogrešna lozinka')
+  }
+  res.status(StatusCodes.OK).json({ user: { username: user.username,email: user.email, _id: user["_id"],  } })
 }
 
 const register = async (req, res) => {
-	const {username, email, password} = req.body;
-
-	const usersByUsername = await User.find({username});
-	if(usersByUsername.length !== 0)
-		throw new CustomAPIError("Korisničko ime je zauzeto", 400);
-	const usersByEmail = await User.find({email});
-
-	if(usersByEmail.length !== 0)
-		throw new CustomAPIError("Email je zauzet", 400);
-	
-	const user = await User.create({ username, password, email});
-	res.status(StatusCodes.CREATED).json({ ok: true , user })
-}
-
-const DeleteUserById = async (req, res) => {
-	const id = req.params.id;
-	const deleted = await User.findOneAndDelete({_id: id});
-	res.status(StatusCodes.OK).json({ok: true, deleted})
-}
-
-const DeleteUserByUsername = async (req, res) => {
-	const username = req.params.username;
-	const deleted = await User.findOneAndDelete({username});
-	res.status(StatusCodes.OK).json({ok: true, deleted})
-}
-
-const DeleteUserByEmail = async (req, res) => {
-	const email = req.params.email;
-	const deleted = await User.findOneAndDelete({email});
-	res.status(StatusCodes.OK).json({ok: true, deleted})
+	let user = await User.create(req.body);
+	const {_id, username, email} = user;
+	res.status(StatusCodes.CREATED).json({ ok: true , user: {_id, username, email} })
 }
 
 module.exports = {
-    register,
-	getAllUsers,
-	DeleteUserById,
-	DeleteUserByEmail,
-	DeleteUserByUsername
+  register,
+  login,
 }

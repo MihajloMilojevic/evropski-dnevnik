@@ -12,6 +12,7 @@
     "serverDev": "cd server && nodemon server"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "expo": "~44.0.0",
     "expo-status-bar": "~1.2.0",
