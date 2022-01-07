@@ -20,7 +20,7 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new UnauthenticatedError('Pogrešna lozinka')
   }
-  res.status(StatusCodes.OK).json({ user: { username: user.username,email: user.email, _id: user["_id"],  } })
+  res.status(StatusCodes.OK).json({ok: true, user: { username: user.username,email: user.email, _id: user["_id"],  } })
 }
 
 const register = async (req, res) => {
