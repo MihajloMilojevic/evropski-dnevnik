@@ -1,7 +1,9 @@
 import React from "react";
 import {useState} from "react";
-import {View, Text, TextInput, StyleSheet, Button, Pressable} from "react-native";
+import {View, Text, StyleSheet, Button, Pressable, Alert} from "react-native";
+import { TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
+import setUser from "../utils/setUser";
 
 
 const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/login";
@@ -10,7 +12,6 @@ export default function Login({navigation}) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
-	const [message, setMessage] = useState("");
 
 	const emailChange = newEmail => {
 		setEmail(newEmail);
@@ -32,39 +33,54 @@ export default function Login({navigation}) {
 			})
 			data = await odg.json();
 			if(data.ok)
-				setMessage(`Uspešno prijavljen kao ${data.user.username}`);
+			{
+				const set = await setUser(data.user.username);
+				if(set)
+				{
+					Alert.alert("Uspeh", `Uspešno prijavljen kao ${data.user.username}`);
+					navigation.replace("home");
+				}
+				else
+				{
+					Alert.alert("Greska", `Došlo je do greske. Probajte ponovo`);
+				}
+			}
 			else
-				setMessage(data.message);
+				Alert.alert("Greska", data.message);
 		} catch (error) {
 			console.error(error);
 		}
 	}
 	const goToRegister = () => {
-		navigation.navigate("register")
+		navigation.replace("register")
 	}
 	return (
 		<View style={styles.container}>
 			<Text style={styles.header}>PRIJAVA</Text>
 			
 			<Text>Email</Text>
-			<View style={styles.input}>
-				<TextInput
-					keyboardType="email-address"
-					onChangeText={emailChange}
-				/>
-			</View>
+			<TextInput
+				style={styles.input}
+				keyboardType="email-address"
+				onChangeText={emailChange}
+			/>
 			<Text>Lozinka</Text>
-			<View style={[styles.input, styles.inline]}>
-				<TextInput
-					secureTextEntry={passwordHidden}
-					onChangeText={passwordChange}
-				/>
-				<Icon 
-					name={passwordHidden ? "eye-with-line" : "eye"}
-					size={20}
-					onPress={togglePasswordVisibility}
-				/>
-			</View>
+			<TextInput
+				style={styles.input}
+				secureTextEntry={passwordHidden}
+				onChangeText={passwordChange}
+				right={
+					<TextInput.Icon 
+						name={() => 
+							<Icon 
+							name={passwordHidden ? "eye-with-line" : "eye"}
+							size={20}
+							onPress={togglePasswordVisibility}
+							/>}
+					/>
+					}
+			/>
+				
 			<Button 
 				title="Prijava"
 				onPress={loginButton}	
@@ -75,7 +91,6 @@ export default function Login({navigation}) {
 			>
 				<Text> Registrujte se.</Text>
 			</Pressable>
-			<Text>{message}</Text>
 		</View>
 	);
 }
@@ -92,17 +107,8 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		width: 200,
-		padding: 0,
-		margin: 3,
-		paddingLeft: 10,
-		borderColor: "black",
-		borderWidth: 2
+		height: 30,
+		paddingBottom: 0,
+		paddingTop: 0
 	},
-	inline: {
-		display: "flex",
-		flexDirection: "row",
-		justifyContent: "space-between",
-		paddingLeft: 10,
-		paddingRight: 10
-	}
   });

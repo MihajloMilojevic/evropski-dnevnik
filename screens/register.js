@@ -1,7 +1,9 @@
 import React from "react";
-import {useState} from "react";
-import {View, Text, TextInput, StyleSheet, Button, Pressable} from "react-native";
+import {useState, useEffect} from "react";
+import {View, Text, StyleSheet, Button, Pressable, Alert} from "react-native";
+import { TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
+import setUser from "../utils/setUser";
 
 const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/register";
 
@@ -10,7 +12,8 @@ export default function Register({navigation}) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
-	const [message, setMessage] = useState("");
+
+	
 
 	const usernameChange = newUsername => {
 		setUsername(newUsername);
@@ -36,18 +39,23 @@ export default function Register({navigation}) {
 			data = await odg.json();
 			if(data.ok)
 			{
-				setMessage("Uspešno registrovan");
+				Alert.alert("Uspeh", "Uspešno registrovan");
+				const set = await setUser(data.user.username);
+				if(set)
+					navigation.replace("home");
+				else
+					navigation.replace("login");
 			}
 			else
 			{
-				setMessage(data.message);
+				Alert.alert("Greska", data.message);
 			}
 		} catch (error) {
 			console.error(error);
 		}
 	}
 	const goToLogin = () => {
-		navigation.navigate("login");
+		navigation.replace("login");
 	}
 	return (
 		<View style={styles.container}>
@@ -64,17 +72,21 @@ export default function Register({navigation}) {
 				onChangeText={emailChange}
 			/>
 			<Text>Lozinka</Text>
-			<View style={[styles.input, styles.inline]}>
-				<TextInput
-					secureTextEntry={passwordHidden}
-					onChangeText={passwordChange}
-				/>
-				<Icon 
-					name={passwordHidden ? "eye-with-line" : "eye"}
-					size={20}
-					onPress={togglePasswordVisibility}
-				/>
-			</View>
+			<TextInput
+				style={styles.input}
+				secureTextEntry={passwordHidden}
+				onChangeText={passwordChange}
+				right={
+					<TextInput.Icon 
+						name={() => 
+							<Icon 
+							name={passwordHidden ? "eye-with-line" : "eye"}
+							size={20}
+							onPress={togglePasswordVisibility}
+							/>}
+					/>
+					}
+			/>
 			<Button 
 				title="Register"
 				onPress={registerButton}	
@@ -85,7 +97,6 @@ export default function Register({navigation}) {
 			>
 				<Text> Prijavite se.</Text>
 			</Pressable>
-			<Text>{message}</Text>
 		</View>
 	);
 }
@@ -103,17 +114,8 @@ const styles = StyleSheet.create({
 	},
 	input: {
 		width: 200,
-		padding: 0,
-		margin: 3,
-		paddingLeft: 10,
-		borderColor: "black",
-		borderWidth: 2
+		height: 30,
+		paddingBottom: 0,
+		paddingTop: 0
 	},
-	inline: {
-		display: "flex",
-		flexDirection: "row",
-		justifyContent: "space-between",
-		paddingLeft: 10,
-		paddingRight: 10
-	}
 })
