@@ -40,7 +40,7 @@ export default function Register({navigation}) {
 			if(data.ok)
 			{
 				Alert.alert("Uspeh", "Uspešno registrovan");
-				const set = await setUser(data.user.username);
+				const set = await setUser({...data.user, token: data.token});
 				if(set)
 					navigation.replace("home");
 				else

@@ -34,7 +34,7 @@ export default function Login({navigation}) {
 			data = await odg.json();
 			if(data.ok)
 			{
-				const set = await setUser(data.user.username);
+				const set = await setUser({...data.user, token: data.token});
 				if(set)
 				{
 					Alert.alert("Uspeh", `Uspešno prijavljen kao ${data.user.username}`);

@@ -24,7 +24,7 @@ export default function Home({navigation})
 			const user = await getUser();
 			if(user !== null)
 			{
-				setUsername(user);
+				setUsername(user.username);
 			}
 		})()
 	}, [])
