@@ -4,8 +4,9 @@ password: Mihajlo123
 kurs: https://www.udemy.com/course/react-native-and-redux-course-using-hooks/learn/lecture/18170640#overview
 
 
-React Natie YT tutorial: https://www.youtube.com/watch?v=ANdSdIlgsEw
+React Native YT tutorial: https://www.youtube.com/watch?v=ANdSdIlgsEw
 React Hooks YT tutorial: https://www.youtube.com/watch?v=LlvBzyy-558
+React Native Animations, Gestures... YT chanel: https://www.youtube.com/c/eveningkid/videos
 
 Expo Docs: https://docs.expo.dev/
 React Native Docs: https://reactnative.dev/
