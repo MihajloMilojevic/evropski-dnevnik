@@ -1,6 +1,6 @@
 const User = require("../models/user")
 const StatusCodes = require("http-status-codes");
-const { BadRequestError, UnauthenticatedError } = require('../errors')
+const { BadRequestError, UnauthenticatedError, NotFoundError } = require('../errors')
 
 const login = async (req, res) => {
 	const { email, password } = req.body;
@@ -20,16 +20,27 @@ const login = async (req, res) => {
   if (!isPasswordCorrect) {
     throw new UnauthenticatedError('Pogrešna lozinka')
   }
-  res.status(StatusCodes.OK).json({ok: true, user: { username: user.username,email: user.email, _id: user["_id"],  } })
+  const token = user.createJWT();
+  res.status(StatusCodes.OK).json({ ok: true, user: { username: user.username,email: user.email, _id: user["_id"],  }, token })
 }
 
 const register = async (req, res) => {
 	let user = await User.create(req.body);
 	const {_id, username, email} = user;
-	res.status(StatusCodes.CREATED).json({ ok: true , user: {_id, username, email} })
+  const token = user.createJWT();
+  res.status(StatusCodes.CREATED).json({ ok: true, user: { username: user.username,email: user.email, _id: user["_id"],  }, token })
+}
+
+const deleteUser = async (req, res) => {
+  const deleted = await User.findByIdAndRemove({_id: req.user.userId});
+  if (!deleted) {
+    throw new NotFoundError(`Korisnik ne postoji`)
+  }
+  res.status(StatusCodes.OK).json({ok: true});
 }
 
 module.exports = {
   register,
   login,
+  deleteUser
 }
