@@ -35,6 +35,10 @@ export default function Home({navigation})
 				title="Odjava"
 				onPress={logoutButton}
 			/>
+			<Button
+				title="Miths"
+				onPress={() => navigation.navigate("miths")}
+			/>
 		</View>
 	);
 }
