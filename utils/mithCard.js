@@ -4,17 +4,10 @@ import { StyleSheet, View, Text, Dimensions  } from "react-native";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function MithCard() {
+export default function MithCard({title}) {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.text}>NASLOV</Text>
-			<Text style={styles.text}>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-				Necessitatibus dolore fugit odio, explicabo voluptatibus 
-				numquam incidunt deleniti temporibus facere earum 
-				consectetur repellat fuga laboriosam sint dolores. 
-				Quibusdam illo sunt numquam.
-			</Text>
+			<Text style={styles.text}>{title}</Text>
 		</View>
 	);
 }
@@ -30,6 +23,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		textAlign: "center",
-		margin: 10
+		color: "dodgerblue",
+		fontSize: 30
 	}
 })

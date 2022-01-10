@@ -18,7 +18,7 @@ const createMith = async () => {
 			body: JSON.stringify({
 				title: title.value,
 				correct: Boolean(correct.value),
-				decsription: desc.value
+				description: desc.value
 			})
 		})
 		const data = await res.json();

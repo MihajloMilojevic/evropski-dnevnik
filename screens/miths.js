@@ -1,44 +1,85 @@
-import React, {useRef} from "react";
-import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button } from "react-native";
+import React, {useRef, useState, useEffect} from "react";
+import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert } from "react-native";
 import MithCard from "../utils/mithCard";
 
-export default function Miths()
+
+
+export default function Miths({navigation})
 {
+	const [mith, setMith] = useState(0);
 	const dimensions = useWindowDimensions();
 	const translate = useRef(new Animated.Value(0)).current;
+	const color = useRef(new Animated.Value(0)).current;
 
+	const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/miths"
 	
-	const panResponder = useRef(
-		PanResponder.create({
-		  onStartShouldSetPanResponder: (evt, gestureState) => true,
-		  onPanResponderMove: (evt, gestureState) => {
-			translate.setValue(gestureState.dx);
-		  },
-		  onPanResponderRelease: (evt, gestureState) => {
-				if(Math.abs(gestureState.dx) <= (dimensions.width * 0.25)) //
-				{
-					Animated.spring(translate, {
-						toValue: 0,
-						useNativeDriver: true
-					}).start();
-				}
+
+	const onGuess = (guess) => {
+		if(!mith) return;
+		let naslov;
+		if(guess === mith.correct)
+			naslov = "Tačno";
+		else
+			naslov = "Pogrešno";
+		Alert.alert(naslov, 
+			`Ovaj mit je ${mith.correct ? "istinit" : "lažan"}
+			${mith.description}`,[
+			{
+				text: "OK",
+				onPress: () => navigation.goBack()
+			}
+		]);
+		
+	}
+	
+	const pan = PanResponder.create({
+			onStartShouldSetPanResponder: (evt, gestureState) => true,
+			onPanResponderMove: (evt, gestureState) => {
+				if(gestureState.dx > 0)
+				color.setValue(1);
 				else if(gestureState.dx < 0)
-				{
-					Animated.timing(translate, {
-						toValue: -dimensions.width,
-						useNativeDriver: true
-					}).start();
-				}
+				color.setValue(-1);
+				translate.setValue(gestureState.dx);
+			},
+			onPanResponderRelease: (evt, gestureState) => {
+				let destination;
+				if(Math.abs(gestureState.dx) <= (dimensions.width * 0.25))
+					destination = 0;
+				else if(gestureState.dx < 0)
+					destination = -1;
 				else
-				{
-					Animated.timing(translate, {
-						toValue: dimensions.width,
-						useNativeDriver: true
-					}).start();
-				}
-		  }
+					destination = 1;
+				Animated.timing(translate, {
+					toValue: dimensions.width * destination,
+					useNativeDriver: true
+				}).start();
+				if(destination !== 0)
+					onGuess(!!(destination + 1))
+			}
 		})
-	  ).current;
+
+		const [panResponder, setPanResponder] = useState(pan)
+
+		useEffect(() => {
+			setPanResponder(pan);
+		  }, [mith]);
+
+		useEffect(() => {
+			(async () => {
+				try {
+					const res = await fetch(URL);
+					const data = await res.json();
+					if(data.ok)
+					{	
+						setMith(data.mith);
+					}
+					else
+						throw new Error(data.message)
+				} catch (error) {
+					Alert.alert(error.message)
+				}
+			})()
+		}, [])
 	
 	const styles = StyleSheet.create({
 		container: {
@@ -60,23 +101,26 @@ export default function Miths()
 		}
 	})
 
-	return (
+	if(!mith)
+		return (<View></View>)
+	else
+		return (
 		<View style={styles.container}>
 			<Animated.View 
 				{...panResponder.panHandlers}
 				style={styles.card}
 			>
-				<MithCard/>
+				<MithCard title={mith.title}/>
 			</Animated.View>
 			<Button
 				title="Reset"
 				color="orange"
-				onPress={()=> {Animated.spring(translate, {
+				onPress={()=> {
+					Animated.spring(translate, {
 					toValue: 0,
 					useNativeDriver: true
 				}).start();
 			}}
 			/>
-		</View>
-	)
+		</View>);
 }
