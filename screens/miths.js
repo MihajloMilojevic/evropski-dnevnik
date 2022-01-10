@@ -51,6 +51,11 @@ export default function Miths()
 		card: {
 			transform: [
 				{translateX: translate},
+				{rotate: translate.interpolate({
+					inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
+					outputRange: ["-15deg", "0deg", "15deg"],
+					extrapolate: "clamp"
+				})}
 			]
 		}
 	})
