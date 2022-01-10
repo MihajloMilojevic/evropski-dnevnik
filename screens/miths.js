@@ -112,15 +112,5 @@ export default function Miths({navigation})
 			>
 				<MithCard title={mith.title}/>
 			</Animated.View>
-			<Button
-				title="Reset"
-				color="orange"
-				onPress={()=> {
-					Animated.spring(translate, {
-					toValue: 0,
-					useNativeDriver: true
-				}).start();
-			}}
-			/>
 		</View>);
 }
