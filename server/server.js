@@ -4,6 +4,7 @@ const connetDB = require("./database/connect")
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 const userRouter = require("./routers/users");
+const mithRouter = require("./routers/miths");
 const express = require('express');
 const server = express();
 
@@ -26,8 +27,9 @@ server.use(helmet());
 server.use(cors());
 server.use(xss());
 
-
+server.use(express.static("public"))
 server.use("/api/users", userRouter);
+server.use("/api/miths", mithRouter);
 
 server.get("/", (req, res) => res.send("Hello"))
 
