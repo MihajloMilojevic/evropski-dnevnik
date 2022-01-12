@@ -18,8 +18,7 @@ const styles = StyleSheet.create({
 		height: windowHeight / 2,
 		justifyContent: "center",
 		textAlign: "center",
-		backgroundColor: "white",
-		borderRadius: 20,
+		backgroundColor: "transparent",
 	},
 	text: {
 		textAlign: "center",

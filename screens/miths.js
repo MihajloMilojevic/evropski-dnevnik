@@ -7,9 +7,9 @@ import MithCard from "../utils/mithCard";
 export default function Miths({navigation})
 {
 	const [mith, setMith] = useState(0);
+	
 	const dimensions = useWindowDimensions();
 	const translate = useRef(new Animated.Value(0)).current;
-	const color = useRef(new Animated.Value(0)).current;
 
 	const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/miths"
 	
@@ -35,10 +35,6 @@ export default function Miths({navigation})
 	const pan = PanResponder.create({
 			onStartShouldSetPanResponder: (evt, gestureState) => true,
 			onPanResponderMove: (evt, gestureState) => {
-				if(gestureState.dx > 0)
-				color.setValue(1);
-				else if(gestureState.dx < 0)
-				color.setValue(-1);
 				translate.setValue(gestureState.dx);
 			},
 			onPanResponderRelease: (evt, gestureState) => {
@@ -51,7 +47,7 @@ export default function Miths({navigation})
 					destination = 1;
 				Animated.timing(translate, {
 					toValue: dimensions.width * destination,
-					useNativeDriver: true
+					useNativeDriver: false
 				}).start();
 				if(destination !== 0)
 					onGuess(!!(destination + 1))
@@ -90,6 +86,17 @@ export default function Miths({navigation})
 			backgroundColor: "dodgerblue",
 		},
 		card: {
+			/*shadowRadius: translate.interpolate({
+				inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
+				outputRange: [100, 0, 100],
+				extrapolate: "clamp"
+			}),*/
+			backgroundColor: translate.interpolate({
+				inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
+				outputRange: ["red", "white", "green"],
+				extrapolate: "clamp"
+			}),
+			borderRadius: 20,
 			transform: [
 				{translateX: translate},
 				{rotate: translate.interpolate({
