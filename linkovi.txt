@@ -21,3 +21,5 @@ Mongoose Docs: https://mongoosejs.com/docs/guide.html
 MongoDB Atlas: https://www.mongodb.com/atlas/database
 
 Mongo_URI: mongodb+srv://<username>:<password>@cluster0.ldgod.mongodb.net/<DataBaseName>?retryWrites=true&w=majority
+
+Ovo su bili linkovi
