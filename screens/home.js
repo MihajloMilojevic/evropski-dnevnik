@@ -32,7 +32,7 @@ export default function Home({navigation})
 		<View style={styles.container}>
 			<Text>ZDRAVO {username}</Text>
 			<Button
-				title="Odjava"
+				title="Logout"
 				onPress={logoutButton}
 			/>
 			<Button
