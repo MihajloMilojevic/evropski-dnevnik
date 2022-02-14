@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {View, Text, StyleSheet, Button, Alert} from "react-native";
+import {View, Text, StyleSheet, Button, Alert, Pressable} from "react-native";
 import getUser from "../utils/getUser";
 import removeUser from "../utils/removeUser";
 
@@ -30,15 +30,25 @@ export default function Home({navigation})
 	}, [])
 	return (
 		<View style={styles.container}>
-			<Text>ZDRAVO {username}</Text>
-			<Button
-				title="Odjava"
-				onPress={logoutButton}
-			/>
-			<Button
-				title="Miths"
-				onPress={() => navigation.navigate("miths")}
-			/>
+			<Text>Zdravo, {username}</Text>
+			<Pressable
+				style={styles.dugme}
+				onPress={logoutButton}>
+				<Text>Izloguj se</Text>
+				
+			</Pressable>
+			<Pressable
+				style={styles.dugme}
+				onPress={() => navigation.navigate("miths")}>
+				<Text>Mitovi</Text>
+				
+			</Pressable>
+			<Pressable
+				style={styles.dugme}
+				onPress={() => navigation.navigate("biblioteka")}>
+				<Text>Biblioteka</Text>
+				
+			</Pressable>
 		</View>
 	);
 }
@@ -49,4 +59,11 @@ const styles = StyleSheet.create({
 	  alignItems: 'center',
 	  justifyContent: 'center',
 	},
+	dugme: {
+		backgroundColor: '#6da0ed',
+		color: '#fff',
+		padding: 10,
+		margin: 5,
+		borderRadius: 5
+	}
 })
