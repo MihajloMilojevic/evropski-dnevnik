@@ -5,6 +5,7 @@ import Login from './screens/login';
 import Home from './screens/home';
 import Load from './screens/load';
 import Miths from './screens/miths';
+import Library from "./screens/library";
 
 const Stack = createStackNavigator();
 
@@ -43,6 +44,13 @@ export default function App() {
         <Stack.Screen
           name="miths"
           component={Miths}
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name="biblioteka"
+          component={Library}
           options={{
             headerShown: false
           }}
