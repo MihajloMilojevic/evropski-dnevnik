@@ -21,14 +21,29 @@ const login = async (req, res) => {
     throw new UnauthenticatedError('Pogrešna lozinka')
   }
   const token = user.createJWT();
-  res.status(StatusCodes.OK).json({ ok: true, user: { username: user.username,email: user.email, _id: user["_id"],  }, token })
+  delete user.password;
+  console.log(user);
+  const returnUser = {
+    _id: user._id,
+    username: user.username,
+    email: user.email,
+    level: user.level
+  }
+  res.status(StatusCodes.OK).json({ ok: true, user: returnUser, token })
 }
 
 const register = async (req, res) => {
 	let user = await User.create(req.body);
-	const {_id, username, email} = user;
   const token = user.createJWT();
-  res.status(StatusCodes.CREATED).json({ ok: true, user: { username: user.username,email: user.email, _id: user["_id"],  }, token })
+  delete user.password;
+  console.log(user)
+  const returnUser = {
+    _id: user._id,
+    username: user.username,
+    email: user.email,
+    level: user.level
+  }
+  res.status(StatusCodes.CREATED).json({ ok: true, user: returnUser, token })
 }
 
 const deleteUser = async (req, res) => {

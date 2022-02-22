@@ -9,19 +9,23 @@ const userSchema = new mongoose.Schema({
         trim: true,
         unique: true
     },
-	email: {
-		type: String,
-        required: [true, "Email je obavezan"],
-        trim: true,
-        match: [
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            "Neispravan emil",
-          ],
-        unique: true,
-	},
+    email: {
+      type: String,
+          required: [true, "Email je obavezan"],
+          trim: true,
+          match: [
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              "Neispravan emil",
+            ],
+          unique: true,
+    },
     password: {
         type: String,
         required: [true, "Lozinka je obavezna"],
+    },
+    level: {
+      type: Number,
+      default: 1
     }
 })
 
