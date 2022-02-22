@@ -11,7 +11,7 @@ export default function Load({navigation})
 			const user =await getUser();
 			if(user !== null)
 			{
-				navigation.replace("home");
+				navigation.replace("app");
 			}
 			else
 				setChecked(true)

@@ -42,7 +42,7 @@ export default function Register({navigation}) {
 				Alert.alert("Uspeh", "Uspešno ste se registrovali");
 				const set = await setUser({...data.user, token: data.token});
 				if(set)
-					navigation.replace("home");
+					navigation.replace("app");
 				else
 					navigation.replace("login");
 			}

@@ -38,7 +38,7 @@ export default function Login({navigation}) {
 				if(set)
 				{
 					Alert.alert("Uspeh", `Uspešno prijavljen kao ${data.user.username}`);
-					navigation.replace("home");
+					navigation.replace("app");
 				}
 				else
 				{

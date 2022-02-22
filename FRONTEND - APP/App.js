@@ -1,11 +1,7 @@
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack"
-import Register from './screens/register';
-import Login from './screens/login';
-import Home from './screens/home';
-import Load from './screens/load';
-import Miths from './screens/miths';
-import Library from "./screens/library";
+import {Register, Login, Load} from "./screens";
+import Aplikacija from "./components/aplikacija";
 
 const Stack = createStackNavigator();
 
@@ -35,22 +31,9 @@ export default function App() {
           }}
         />
         <Stack.Screen
-          name="home"
-          component={Home}
-          options={{
-            headerShown: false
-          }}
-        />
-        <Stack.Screen
-          name="miths"
-          component={Miths}
-          options={{
-            headerShown: false
-          }}
-        />
-        <Stack.Screen
-          name="biblioteka"
-          component={Library}
+          name="app"
+          component={Aplikacija}
+          
           options={{
             headerShown: false
           }}
