@@ -1,6 +1,7 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import {View, StyleSheet, Button} from "react-native";
+import CustomButton from "../components/customButton";
 import getUser from "../utils/getUser";
 
 export default function Load({navigation})
@@ -34,12 +35,12 @@ export default function Load({navigation})
 			<View
 				style={styles.container}
 			>
-				<Button 
-					title="Registruj se"
+				<CustomButton
+					title={"Registruj se"}
 					onPress={goToRegister}
 				/>
-				<Button 
-					title="Prijavi se"
+				<CustomButton
+					title={"Prijavi se"}
 					onPress={goToLogin}
 				/>
 			</View>

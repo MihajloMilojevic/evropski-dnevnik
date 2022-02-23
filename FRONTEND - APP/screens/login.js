@@ -3,6 +3,7 @@ import {useState} from "react";
 import {View, Text, StyleSheet, Button, Pressable, Alert} from "react-native";
 import { TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
+import CustomButton from "../components/customButton";
 import setUser from "../utils/setUser";
 
 
@@ -80,11 +81,11 @@ export default function Login({navigation}) {
 					/>
 					}
 			/>
-				
-			<Button 
-				title="Prijava"
-				onPress={loginButton}	
-			></Button>
+
+			<CustomButton
+				title={"Prijava"}
+				onPress={loginButton}
+			/>
 			<Text>Nemate nalog?</Text>
 			<Pressable
 				onPress={goToRegister}

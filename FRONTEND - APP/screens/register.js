@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import {View, Text, StyleSheet, Button, Pressable, Alert} from "react-native";
 import { TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
+import CustomButton from "../components/customButton";
 import setUser from "../utils/setUser";
 
 const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/register";
@@ -87,10 +88,10 @@ export default function Register({navigation}) {
 					/>
 					}
 			/>
-			<Button 
-				title="Register"
-				onPress={registerButton}	
-			></Button>
+			<CustomButton
+				title={"Register"}
+				onPress={registerButton}
+			/>
 			<Text>Imete nalog?</Text>
 			<Pressable
 				onPress={goToLogin}

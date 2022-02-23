@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import {View, Text, StyleSheet, Button, Alert, Pressable} from "react-native";
 import getUser from "../utils/getUser";
 import removeUser from "../utils/removeUser";
+import CustomButton from "../components/customButton";
 
 export default function Home({navigation})
 {
@@ -31,24 +32,18 @@ export default function Home({navigation})
 	return (
 		<View style={styles.container}>
 			<Text>Zdravo, {username}</Text>
-			<Pressable
-				style={styles.dugme}
-				onPress={logoutButton}>
-				<Text>Izloguj se</Text>
-				
-			</Pressable>
-			<Pressable
-				style={styles.dugme}
-				onPress={() => navigation.navigate("miths")}>
-				<Text>Mitovi</Text>
-				
-			</Pressable>
-			<Pressable
-				style={styles.dugme}
-				onPress={() => navigation.navigate("biblioteka")}>
-				<Text>Biblioteka</Text>
-				
-			</Pressable>
+			<CustomButton
+				title={"Izloguj se"}
+				onPress={logoutButton}
+			/>
+			<CustomButton
+				title={"Mitovi"}
+				onPress={() => navigation.navigate("miths")}
+			/>
+			<CustomButton
+				title={"Biblioteka"}
+				onPress={() => navigation.navigate("biblioteka")}
+			/>
 		</View>
 	);
 }
