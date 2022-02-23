@@ -89,7 +89,7 @@ export default function Register({navigation}) {
 					}
 			/>
 			<CustomButton
-				title={"Register"}
+				title={"Registruj se"}
 				onPress={registerButton}
 			/>
 			<Text>Imete nalog?</Text>
