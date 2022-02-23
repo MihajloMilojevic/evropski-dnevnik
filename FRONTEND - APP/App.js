@@ -1,7 +1,7 @@
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack"
 import {Register, Login, Load} from "./screens";
-import Aplikacija from "./components/aplikacija";
+import Aplikacija from "./screens/aplikacija";
 
 const Stack = createStackNavigator();
 

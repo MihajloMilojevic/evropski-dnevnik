@@ -3,8 +3,8 @@ import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-import { Home, Miths, Library } from "../screens";
-import Games from "../screens/app/games";
+import { Home, Miths, Library } from ".";
+import Games from "./app/games";
 const Tab = createBottomTabNavigator();
 
 function Aplikacija({}) {

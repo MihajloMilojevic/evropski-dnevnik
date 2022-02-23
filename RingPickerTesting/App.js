@@ -1,5 +1,6 @@
 import CircleList from "react-native-circle-list"
-import { Alert, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Alert, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
+import star from "./star.png";
 
 function CircleListItem({item}) {
   return (
@@ -9,7 +10,13 @@ function CircleListItem({item}) {
         Alert.alert("" + item.id, "sad predjemo na level " + item.id)
       }}
     >
-      <Text>{item.value}</Text>
+      <ImageBackground
+        source={star} //{uri: "https://www.pngkey.com/png/full/4-44204_png-star-black-and-white-transparent-star-black.png"}
+        resizeMode="cover" 
+        style={styles.image}
+      >
+        <Text style={styles.textColor}>{item.value}</Text>
+      </ImageBackground>
     </Pressable>
   )
 }
@@ -79,8 +86,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   element: {
-    backgroundColor: "#6da0ed",
-    borderRadius: 50,
-    padding: 20
+    //backgroundColor: "#6da0ed",
+    //borderRadius: 30,
+    aspectRatio: 1,
+    color: "white",
+    width: 80
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white"
+  },
+  textColor: {
+    color: "white"
   }
 });
