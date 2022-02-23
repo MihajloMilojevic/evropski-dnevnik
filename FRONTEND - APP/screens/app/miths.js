@@ -1,6 +1,6 @@
 import React, {useRef, useState, useEffect} from "react";
 import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert } from "react-native";
-import MithCard from "../utils/mithCard";
+import MithCard from "../../components/mithCard";
 
 
 

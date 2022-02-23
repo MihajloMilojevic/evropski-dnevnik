@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {View, Text, StyleSheet, Button, Alert, Pressable} from "react-native";
-import getUser from "../utils/getUser";
-import removeUser from "../utils/removeUser";
-import CustomButton from "../components/customButton";
+import getUser from "../../utils/getUser";
+import removeUser from "../../utils/removeUser";
+import CustomButton from "../../components/customButton";
 
 export default function Home({navigation})
 {
@@ -54,11 +54,4 @@ const styles = StyleSheet.create({
 	  alignItems: 'center',
 	  justifyContent: 'center',
 	},
-	dugme: {
-		backgroundColor: '#6da0ed',
-		color: '#fff',
-		padding: 10,
-		margin: 5,
-		borderRadius: 5
-	}
 })
