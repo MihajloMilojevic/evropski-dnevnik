@@ -46,16 +46,24 @@ const register = async (req, res) => {
   res.status(StatusCodes.CREATED).json({ ok: true, user: returnUser, token })
 }
 
-const deleteUser = async (req, res) => {
-  const deleted = await User.findByIdAndRemove({_id: req.user.userId});
-  if (!deleted) {
-    throw new NotFoundError(`Korisnik ne postoji`)
+
+
+const passLevel = async (req, res) => {
+  const user = await User.findById(req.user.userId).select("-password");
+  const passedLevel = Number(req.params.level);
+  if(user.level == passedLevel)
+  {
+    user.level++;
+    await user.save();
+    const token = user.createJWT();
+    return res.status(StatusCodes.OK).json({ok: true, levelup: true, user, token})
   }
-  res.status(StatusCodes.OK).json({ok: true});
+  const token = user.createJWT();
+  return res.status(StatusCodes.OK).json({ok: true, levelup: false, user, token})
 }
 
 module.exports = {
   register,
   login,
-  deleteUser
+  passLevel
 }
