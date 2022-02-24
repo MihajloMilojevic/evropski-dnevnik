@@ -5,6 +5,7 @@ const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 const userRouter = require("./routers/users");
 const mithRouter = require("./routers/miths");
+const levelRouter = require("./routers/level");
 const express = require('express');
 const server = express();
 
@@ -29,6 +30,7 @@ server.use(xss());
 
 server.use(express.static("public"))
 server.use("/api/users", userRouter);
+server.use("/api/levels", levelRouter);
 server.use("/api/miths", mithRouter);
 
 server.get("/", (req, res) => res.send("Hello"))

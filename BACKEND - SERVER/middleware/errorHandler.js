@@ -14,7 +14,13 @@ module.exports = (err, req, res, next) => {
 		customError.statusCode = StatusCodes.BAD_REQUEST;
 	  }
 	  if (err.code && err.code === 11000) {
-		customError.msg = err.keyValue.username ? "Korisničko ime je zauzeto" : "Email je zauzet";
+		customError.msg = "Zauzeto";
+		if(err.keyValue.username)
+			customError.msg = "Korisničko ime je zauzeto";
+		if(err.keyValue.email)
+			customError.msg = "Email je zauzet";	
+		if(err.keyValue.level)
+			customError.msg = "Level postoji";
 		customError.statusCode = StatusCodes.BAD_REQUEST;
 	  }
 	  if (err.name === 'CastError') {

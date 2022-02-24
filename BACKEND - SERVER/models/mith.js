@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const mithSchema = new mongoose.Schema({
-    title: {
+    title: {  
 		type: String,
 		required: [true, "Naslov je obavezan"],
 		trim: true,
@@ -13,6 +13,12 @@ const mithSchema = new mongoose.Schema({
 	description: {
 		type: String,
 		trim: true
+	},
+	level: {
+		type: Number,
+		min: 1,
+		max: 12,
+		required: [true, "Level je obavezan"]
 	}
 })
 
