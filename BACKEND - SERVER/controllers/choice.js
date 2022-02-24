@@ -1,4 +1,4 @@
-import Choice from "../models/choice";
+const Choice = require("../models/choice");
 const StatusCodes = require("http-status-codes");
 
 const createChoice = async (req, res) => {

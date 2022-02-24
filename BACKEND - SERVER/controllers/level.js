@@ -1,6 +1,6 @@
-import Level from "../models/level";
-import Mith from "../models/mith";
-import Choice from "../models/choice";
+const Level = require("../models/level");
+const Mith = require("../models/mith");
+const Choice = require("../models/choice");
 const StatusCodes = require("http-status-codes");
 const { NotFoundError } = require("../errors");
 
@@ -26,14 +26,14 @@ const getLevel = async (req, res) => {
             res.status(StatusCodes.OK).json({ ok: true, mith: randomMith});
             break;
         case "quiz":
-            const questions = await Choice.find({type: "quiz"}).where("level").lte(levelId);
-            const randomQuestion = questions[randomNumber(0, questions.length)];
-            res.status(StatusCodes.OK).json({ ok: true, quiz: randomQuestion});
+            const quizes = await Choice.find({type: "quiz"}).where("level").lte(levelId);
+            const randomQuiz = quizes[randomNumber(0, questions.length)];
+            res.status(StatusCodes.OK).json({ ok: true, quiz: randomQuiz});
             break;
         case "image":
-            const questions = await Choice.find({type: "image"}).where("level").lte(levelId);
-            const randomQuestion = questions[randomNumber(0, questions.length)];
-            res.status(StatusCodes.OK).json({ ok: true, quiz: randomQuestion});
+            const images = await Choice.find({type: "image"}).where("level").lte(levelId);
+            const randomImage= images[randomNumber(0, questions.length)];
+            res.status(StatusCodes.OK).json({ ok: true, quiz: randomImage});
             break;
     }
     throw new Error();

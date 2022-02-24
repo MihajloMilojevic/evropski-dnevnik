@@ -1,3 +1,4 @@
 /***** Ovo je primer .env fajla koji treba da se nalazi u folderu server *****/
 
-MONGO_URI = mongodb+srv://<ime>:<lozinka>@cluster0.ldgod.mongodb.net/EvropskiDnevnik?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://<ime>:<lozinka>@cluster0.ldgod.mongodb.net/EvropskiDnevnik?retryWrites=true&w=majority
+JWT_SECRET=randomchars
