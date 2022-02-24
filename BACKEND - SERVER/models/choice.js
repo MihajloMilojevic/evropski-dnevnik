@@ -15,7 +15,7 @@ const choiceSchema = new mongoose.Schema({
         required: [true, "Pitanje je obavezno"]
     },
     answers: {
-        type: Array,
+        type: [String],
         default: [],
         required: [true, "Ponudjeni odgovori su obavezni"]
     },
