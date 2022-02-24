@@ -3,5 +3,16 @@
 		"title": "Testing mith",
 		"correct": true,
 		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget ligula at justo imperdiet dignissim. Morbi fringilla vitae mauris ac rutrum. Praesent sit amet dictum mi. Cras auctor lectus tellus, vel lobortis sapien ultrices eu. Proin sed elementum nisl, sit amet venenatis nibh. Sed non feugiat nisi, facilisis mollis diam. Nulla vulputate at nisi ut blandit. Ut vitae pulvinar orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras at lacus ligula. Maecenas at egestas ex."
+	},
+	"quiz": {
+		"question": "Koliko zvezdica se nalazi na zastavi EU?",
+		"answers": ["10", "12", "15", "14"],
+		"correct": 1
+	},	
+	"image": {
+		"image": "https://www.b92.net/news/pics/2021/11/03/1150282853618282ab96d68129964412_w640.jpg",
+		"question": "Pogodi državu",
+		"answers": ["Rumunija", "Hrvatska", "Bugarska", "Srbija", "Crna Gora", "Madjarska"],
+		"correct": 3
 	}
 }

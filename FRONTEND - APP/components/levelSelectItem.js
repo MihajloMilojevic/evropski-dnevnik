@@ -9,11 +9,11 @@ export default function LevelSelectItem({item, navigation}) {
 		style={styles.element}
 		onPress={() => {
 			if(item.value % 3 === 0)
-			{
-				navigation.navigate("mith", levelsDev.mith);
-				return;
-			}
-			Alert.alert("" + item.value, "sad predjemo na level " + item.value)
+				return navigation.navigate("mith", levelsDev.mith);
+			if(item.value % 3 === 1)
+				return navigation.navigate("quiz", levelsDev.quiz);
+			if(item.value % 3 === 2)
+				return navigation.navigate("image", levelsDev.image);
 		}}
 	  >
 		<ImageBackground

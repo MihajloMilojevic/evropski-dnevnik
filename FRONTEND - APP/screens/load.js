@@ -19,11 +19,11 @@ export default function Load({navigation})
 		})()
 	}, [])
 
-	goToLogin = () => {
+	const goToLogin = () => {
 		navigation.replace("login")
 	}
 	
-	goToRegister = () => {
+	const goToRegister = () => {
 		navigation.replace("register")
 	}
 

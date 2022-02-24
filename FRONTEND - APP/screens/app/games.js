@@ -1,4 +1,6 @@
-import { Miths } from "..";
+import Miths from "./miths";
+import Quiz from "./quiz";
+import ImageQuiz from "./imageQuiz";
 import {View, Text, StyleSheet} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LevelSelect from "./levelSelect";
@@ -22,6 +24,14 @@ export default function Games({navigation}) {
             <Stack.Screen 
                 name="mith"
                 component={Miths}
+            />
+            <Stack.Screen 
+                name="quiz"
+                component={Quiz}
+            />
+            <Stack.Screen 
+                name="image"
+                component={ImageQuiz}
             />
         </Stack.Navigator>
     )
