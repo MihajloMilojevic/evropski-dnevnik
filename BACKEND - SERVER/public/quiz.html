@@ -9,13 +9,18 @@
 <body>
 	<label>Naslov</label>
 	<textarea id="title"></textarea><br>
-	<label>Tacan</label>
-	<input type="checkbox" id="correct"><br>
-	<label>Opis</label>
-	<textarea id="description"></textarea><br>
-	<button id="create">Kreiraj</button>
+    <input type="file" id="img" name="img" accept="image/*">
+    <div id="odgovori">
 
-	<script src="miths.js"></script>
+    </div>
+    <div class="dodajodg">
+        <button id="dodaj" onclick="addAnswer()">Dodaj</button>
+    </div>
+    <br>
+
+	<button id="create" onclick="kreiraj()">Kreiraj</button>
+
+    <script src="quiz.js"></script>
 	
 </body>
 </html>
