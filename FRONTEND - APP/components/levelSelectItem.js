@@ -1,12 +1,19 @@
 import { Pressable, ImageBackground, Text, StyleSheet, Alert } from "react-native";
 import starImage from "../assets/star.png";
+import levelsDev from "../levelsDev.json";
 
-export default function LevelSelectItem({item}) {
+
+export default function LevelSelectItem({item, navigation}) {
 	return (
 	  <Pressable 
 		style={styles.element}
 		onPress={() => {
-		  Alert.alert("" + item.value, "sad predjemo na level " + item.value)
+			if(item.value % 3 === 0)
+			{
+				navigation.navigate("mith", levelsDev.mith);
+				return;
+			}
+			Alert.alert("" + item.value, "sad predjemo na level " + item.value)
 		}}
 	  >
 		<ImageBackground

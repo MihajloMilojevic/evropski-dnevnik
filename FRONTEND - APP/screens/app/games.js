@@ -19,6 +19,10 @@ export default function Games({navigation}) {
                 name="select"
                 component={LevelSelect}
             />
+            <Stack.Screen 
+                name="mith"
+                component={Miths}
+            />
         </Stack.Navigator>
     )
 }

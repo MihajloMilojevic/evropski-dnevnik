@@ -1,18 +1,15 @@
 import React, {useRef, useState, useEffect} from "react";
-import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert } from "react-native";
+import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert, Text } from "react-native";
 import MithCard from "../../components/mithCard";
 
 
 
-export default function Miths({navigation})
+export default function Miths({navigation, route})
 {
-	const [mith, setMith] = useState(0);
+	const [mith, setMith] = useState(route.params);
 	
 	const dimensions = useWindowDimensions();
-	const translate = useRef(new Animated.Value(0)).current;
-
-	const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/miths"
-	
+	const translate = useRef(new Animated.Value(0)).current;	
 
 	const onGuess = (guess) => {
 		if(!mith) return;
@@ -59,23 +56,6 @@ export default function Miths({navigation})
 		useEffect(() => {
 			setPanResponder(pan);
 		  }, [mith]);
-
-		useEffect(() => {
-			(async () => {
-				try {
-					const res = await fetch(URL);
-					const data = await res.json();
-					if(data.ok)
-					{	
-						setMith(data.mith);
-					}
-					else
-						throw new Error(data.message)
-				} catch (error) {
-					Alert.alert(error.message)
-				}
-			})()
-		}, [])
 	
 	const styles = StyleSheet.create({
 		container: {
@@ -109,7 +89,7 @@ export default function Miths({navigation})
 	})
 
 	if(!mith)
-		return (<View></View>)
+		return (<View><Text>Error</Text></View>)
 	else
 		return (
 		<View style={styles.container}>

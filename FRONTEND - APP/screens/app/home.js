@@ -37,10 +37,6 @@ export default function Home({navigation})
 				onPress={logoutButton}
 			/>
 			<CustomButton
-				title={"Mitovi"}
-				onPress={() => navigation.navigate("miths")}
-			/>
-			<CustomButton
 				title={"Biblioteka"}
 				onPress={() => navigation.navigate("biblioteka")}
 			/>

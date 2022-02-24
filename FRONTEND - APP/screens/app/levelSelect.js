@@ -2,10 +2,9 @@ import { View, StyleSheet } from "react-native";
 import CircleList from "react-native-circle-list"
 import LevelSelectItem from "../../components/levelSelectItem"
 
-
-export default function LevelSelect({navigate}) {
+export default function LevelSelect({navigation}) {
 	const keyExtractor = () => (Math.random() * 1000).toString(36);
-    const renderItem = ({ item }) => <LevelSelectItem item={item} />
+    const renderItem = ({ item }) => <LevelSelectItem navigation={navigation} item={item} />
 	const data = [
 		{ value: 1},
 		{ value: 2},
@@ -17,6 +16,8 @@ export default function LevelSelect({navigate}) {
 		{ value: 8},
 		{ value: 9},
 		{ value: 10},
+		{ value: 11},
+		{ value: 12},
 	]
 
 	return (
