@@ -1,11 +1,12 @@
 import React from "react";
 import {useState, useEffect} from "react";
-import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground} from "react-native";
-import { TextInput } from "react-native-paper";
+import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground, Image} from "react-native";
+import { Colors, TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
 import setUser from "../utils/setUser";
 import backSlika from "../assets/pozadine/registerBcg.png";
+import gornjaSlika from "../assets/slike/register.png";
 
 const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/register";
 
@@ -61,20 +62,26 @@ export default function Register({navigation}) {
 	}
 	return (
 		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
-			<Text style={styles.header}>REGISTRACIJA</Text>
-			<Text>Korisničko ime</Text>
+			<Image
+				style={styles.slika}
+				source={gornjaSlika}
+			></Image>
+			<Text style={styles.header}>Dobrodošli, izaberite
+jednu od ponuđenih
+opcija</Text>
 			<TextInput
 				style={styles.input}
 				onChangeText={usernameChange}
+				placeholder={"korisničko ime"}
 			/>
-			<Text>Email</Text>
 			<TextInput
 				style={styles.input}
 				keyboardType="email-address"
 				onChangeText={emailChange}
+				placeholder={"mejl"}
 			/>
-			<Text>Lozinka</Text>
 			<TextInput
+				placeholder={"šifra"}
 				style={styles.input}
 				secureTextEntry={passwordHidden}
 				onChangeText={passwordChange}
@@ -97,7 +104,7 @@ export default function Register({navigation}) {
 			<Pressable
 				onPress={goToLogin}
 			>
-				<Text> Prijavite se.</Text>
+				<Text style={styles.prijava}> Prijavite se.</Text>
 			</Pressable>
 		</ImageBackground>
 	);
@@ -112,12 +119,24 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		fontWeight: "bold",
-		fontSize: 20
+		fontSize: 20,
+		textAlign: "center",
+		color: "#000",
+		paddingBottom: 50
 	},
 	input: {
+		marginBottom: 20,
 		width: 200,
 		height: 30,
 		paddingBottom: 0,
 		paddingTop: 0
 	},
+	slika: {
+		width: 200,
+		height: 200
+	},
+	prijava: {
+		color: "#3268B8",
+		textDecorationLine: "underline"
+	}
 })
