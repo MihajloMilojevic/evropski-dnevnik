@@ -79,11 +79,11 @@ export default function Miths({navigation, route})
 			borderRadius: 20,
 			transform: [
 				{translateX: translate},
-				{rotate: translate.interpolate({
-					inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
-					outputRange: ["-15deg", "0deg", "15deg"],
-					extrapolate: "clamp"
-				})}
+				// {rotate: translate.interpolate({
+				// 	inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
+				// 	outputRange: ["-15deg", "0deg", "15deg"],
+				// 	extrapolate: "clamp"
+				// })}
 			]
 		}
 	})

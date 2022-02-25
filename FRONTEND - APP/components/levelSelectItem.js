@@ -8,12 +8,14 @@ export default function LevelSelectItem({item, navigation}) {
 	  <Pressable 
 		style={styles.element}
 		onPress={() => {
-			if(item.value % 3 === 0)
+			if(item.value % 4 === 0)
 				return navigation.navigate("mith", levelsDev.mith);
-			if(item.value % 3 === 1)
+			if(item.value % 4 === 1)
 				return navigation.navigate("quiz", levelsDev.quiz);
-			if(item.value % 3 === 2)
+			if(item.value % 4 === 2)
 				return navigation.navigate("image", levelsDev.image);
+			if(item.value % 4 === 3)
+				return navigation.navigate("memory", levelsDev.memory);
 		}}
 	  >
 		<ImageBackground
