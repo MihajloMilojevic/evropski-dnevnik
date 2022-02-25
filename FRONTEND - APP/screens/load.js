@@ -43,7 +43,7 @@ export default function Load({navigation})
 				>
 				</Image>
 				<Text style={styles.header}>Dobrodošli, izaberite
-jednu od ponudjenih
+jednu od ponuđenih
 opcija</Text>
 				<CustomButton
 					title={"Registruj se"}

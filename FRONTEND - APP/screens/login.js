@@ -45,11 +45,11 @@ export default function Login({navigation}) {
 				}
 				else
 				{
-					Alert.alert("Greska", `Došlo je do greske. Probajte ponovo`);
+					Alert.alert("Greska", `Došlo je do greške. Probajte ponovo`);
 				}
 			}
 			else
-				Alert.alert("Greska", data.message);
+				Alert.alert("Greška", data.message);
 		} catch (error) {
 			console.error(error);
 		}
