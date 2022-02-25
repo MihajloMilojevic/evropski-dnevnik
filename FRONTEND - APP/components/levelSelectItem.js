@@ -33,9 +33,9 @@ export default function LevelSelectItem({item, navigation}) {
 const styles = StyleSheet.create({
 	container: {
 	  flex: 1,
-	  background:' rgb(205,205,205)',
-      background:' radial-gradient(circle, rgba(205,205,205,1) 7%, rgba(3,22,121,1) 93%)',
-	//  backgroundColor: '#fff',
+	//  background:' rgb(205,205,205)',
+     // background:' radial-gradient(circle, rgba(205,205,205,1) 7%, rgba(3,22,121,1) 93%)',
+	  backgroundColor: '#fff',
 	  alignItems: 'center',
 	  justifyContent: 'center',
 	},
