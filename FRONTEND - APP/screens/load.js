@@ -1,8 +1,9 @@
 import React from "react";
 import {useState, useEffect} from "react";
-import {View, StyleSheet, Button} from "react-native";
+import {View, StyleSheet, Button, ImageBackground} from "react-native";
 import CustomButton from "../components/customButton";
 import getUser from "../utils/getUser";
+import backSlika from "../assets/pozadine/loadBcg.png";
 
 export default function Load({navigation})
 {
@@ -32,7 +33,7 @@ export default function Load({navigation})
 		return (<View></View>)
 	else 
 		return (
-			<View
+			<ImageBackground source={backSlika} resizeMode={"cover"}
 				style={styles.container}
 			>
 				<CustomButton
@@ -43,7 +44,7 @@ export default function Load({navigation})
 					title={"Prijavi se"}
 					onPress={goToLogin}
 				/>
-			</View>
+			</ImageBackground>
 		)
 
 }

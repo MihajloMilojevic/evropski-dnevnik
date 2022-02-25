@@ -1,10 +1,11 @@
 import React from "react";
 import {useState} from "react";
-import {View, Text, StyleSheet, Button, Pressable, Alert} from "react-native";
+import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground} from "react-native";
 import { TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
 import setUser from "../utils/setUser";
+import backSlika from "../assets/pozadine/loginBcg.png";
 
 
 const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/login";
@@ -56,7 +57,7 @@ export default function Login({navigation}) {
 		navigation.replace("register")
 	}
 	return (
-		<View style={styles.container}>
+		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
 			<Text style={styles.header}>PRIJAVA</Text>
 			
 			<Text>Email</Text>
@@ -89,10 +90,10 @@ export default function Login({navigation}) {
 			<Text>Nemate nalog?</Text>
 			<Pressable
 				onPress={goToRegister}
-			>
-				<Text> Registrujte se.</Text>
-			</Pressable>
-		</View>
+				
+			><Text>Registrujte se </Text></Pressable>
+			
+		</ImageBackground>
 	);
 }
 const styles = StyleSheet.create({

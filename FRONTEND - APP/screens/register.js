@@ -1,10 +1,11 @@
 import React from "react";
 import {useState, useEffect} from "react";
-import {View, Text, StyleSheet, Button, Pressable, Alert} from "react-native";
+import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground} from "react-native";
 import { TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
 import setUser from "../utils/setUser";
+import backSlika from "../assets/pozadine/registerBcg.png";
 
 const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/register";
 
@@ -59,7 +60,7 @@ export default function Register({navigation}) {
 		navigation.replace("login");
 	}
 	return (
-		<View style={styles.container}>
+		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
 			<Text style={styles.header}>REGISTRACIJA</Text>
 			<Text>Korisničko ime</Text>
 			<TextInput
@@ -98,7 +99,7 @@ export default function Register({navigation}) {
 			>
 				<Text> Prijavite se.</Text>
 			</Pressable>
-		</View>
+		</ImageBackground>
 	);
 }
 
