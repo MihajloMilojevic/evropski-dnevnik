@@ -1,6 +1,8 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import {View, StyleSheet, Button, ImageBackground, Image, Text, Pressable} from "react-native";
+import { setUser } from "../redux";
+import { useDispatch} from "react-redux";
 import CustomButton from "../components/customButton";
 import getUser from "../utils/getUser";
 import backSlika from "../assets/pozadine/loadBcg.png";
@@ -9,11 +11,13 @@ import gornjaSlika from "../assets/slike/logo1.png";
 export default function Load({navigation})
 {
 	const [checked, setChecked] = useState(false)
+	const dispatch = useDispatch();
 	useEffect(() => {
 		(async () => {
-			const user =await getUser();
+			let user = await getUser();
 			if(user !== null)
 			{
+				dispatch(setUser(user))
 				navigation.replace("app");
 			}
 			else

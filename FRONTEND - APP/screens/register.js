@@ -4,7 +4,8 @@ import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground, Image
 import { Colors, TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
-import setUser from "../utils/setUser";
+import {useDispatch} from "react-redux";
+import {setUser} from "../redux";
 import backSlika from "../assets/pozadine/registerBcg.png";
 import gornjaSlika from "../assets/slike/register.png";
 
@@ -16,7 +17,7 @@ export default function Register({navigation}) {
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
 
-	
+	const dispatch = useDispatch();
 
 	const usernameChange = newUsername => {
 		setUsername(newUsername);
@@ -43,11 +44,8 @@ export default function Register({navigation}) {
 			if(data.ok)
 			{
 				Alert.alert("Uspeh", "Uspešno ste se registrovali");
-				const set = await setUser({...data.user, token: data.token});
-				if(set)
-					navigation.replace("app");
-				else
-					navigation.replace("login");
+				dispatch(setUser({...data.user, token: data.token}))
+				navigation.replace("app");
 			}
 			else
 			{

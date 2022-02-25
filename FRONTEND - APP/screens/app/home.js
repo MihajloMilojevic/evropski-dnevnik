@@ -1,37 +1,24 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {View, Text, StyleSheet, Button, Alert, Pressable} from "react-native";
-import getUser from "../../utils/getUser";
-import removeUser from "../../utils/removeUser";
+import { removeUser } from "../../redux";
+import {useSelector, useDispatch} from "react-redux";
 import CustomButton from "../../components/customButton";
 
 export default function Home({navigation})
 {
-	const [username, setUsername] = useState("")
+	const [user, setUser] = useState(useSelector(state => state.user));
+	const dispatch = useDispatch();
 
 	const logoutButton = async () => {
-		const removed = await removeUser();
-		if(removed)
-		{
-			Alert.alert("Uspeh", "Uspesno odjavljen")
-			navigation.replace("login")
-		}
-		else
-			Alert.alert("Greska", "Došlo je do greške. Probajte ponovo");
+		dispatch(removeUser())
+		Alert.alert("Uspeh", "Uspešno odjavljen")
+		navigation.replace("login")
 	}
 
-	useEffect(() => {
-		(async () => {
-			const user = await getUser();
-			if(user !== null)
-			{
-				setUsername(user.username);
-			}
-		})()
-	}, [])
 	return (
 		<View style={styles.container}>
-			<Text>Zdravo, {username}</Text>
+			<Text>Zdravo, {user.username}</Text>
 			<CustomButton
 				title={"Izloguj se"}
 				onPress={logoutButton}

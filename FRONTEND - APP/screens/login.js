@@ -2,9 +2,10 @@ import React from "react";
 import {useState} from "react";
 import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground, Image, ColorPropType} from "react-native";
 import { TextInput } from "react-native-paper";
+import {useDispatch} from "react-redux";
+import {setUser} from "../redux";
 import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
-import setUser from "../utils/setUser";
 import backSlika from "../assets/pozadine/loginBcg.png";
 import gornjaSlika from "../assets/slike/unlock.png";
 
@@ -15,6 +16,8 @@ export default function Login({navigation}) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
+
+	const dispatch = useDispatch();
 
 	const emailChange = newEmail => {
 		setEmail(newEmail);
@@ -37,16 +40,9 @@ export default function Login({navigation}) {
 			data = await odg.json();
 			if(data.ok)
 			{
-				const set = await setUser({...data.user, token: data.token});
-				if(set)
-				{
-					Alert.alert("Uspeh", `Uspešno prijavljen kao ${data.user.username}`);
-					navigation.replace("app");
-				}
-				else
-				{
-					Alert.alert("Greska", `Došlo je do greške. Probajte ponovo`);
-				}
+				dispatch(setUser({...data.user, token: data.token}))
+				Alert.alert("Uspeh", `Uspešno prijavljen kao ${data.user.username}`);
+				navigation.replace("app");
 			}
 			else
 				Alert.alert("Greška", data.message);

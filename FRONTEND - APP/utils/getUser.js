@@ -8,5 +8,6 @@ export default async function getUser()
 		return JSON.parse(user);
 	}catch (e) {
 		console.error(e);
+		return null;
 	}
 }
