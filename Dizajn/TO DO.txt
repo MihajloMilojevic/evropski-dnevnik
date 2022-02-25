@@ -1,0 +1,16 @@
+loading screen - done
+login screen - done
+register screen - done
+home screen
+games (zvezdice)
+leaderboard
+
+games: 
+ - prevlacenje
+ - pitanje i odgovori
+ - pitanje, slika i odgovori
+ - memorijske kartice (6, 8, 10)
+
+modals: 
+ - pobeda
+ - poraz
