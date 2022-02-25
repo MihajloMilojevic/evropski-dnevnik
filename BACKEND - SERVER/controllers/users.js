@@ -27,7 +27,8 @@ const login = async (req, res) => {
     _id: user._id,
     username: user.username,
     email: user.email,
-    level: user.level
+    level: user.level,
+    points: user.points
   }
   res.status(StatusCodes.OK).json({ ok: true, user: returnUser, token })
 }
@@ -41,7 +42,8 @@ const register = async (req, res) => {
     _id: user._id,
     username: user.username,
     email: user.email,
-    level: user.level
+    level: user.level,
+    points: user.points
   }
   res.status(StatusCodes.CREATED).json({ ok: true, user: returnUser, token })
 }
@@ -50,16 +52,22 @@ const register = async (req, res) => {
 
 const passLevel = async (req, res) => {
   const user = await User.findById(req.user.userId).select("-password");
+  console.log(user);
   const passedLevel = Number(req.params.level);
+  let pointsToAdd = (passLevel - 1) / 4 + 1;
+  user.points += pointsToAdd;
   if(user.level == passedLevel)
   {
     user.level++;
+    user.points += 2;
+    pointsToAdd += 2;
     await user.save();
     const token = user.createJWT();
-    return res.status(StatusCodes.OK).json({ok: true, levelup: true, user, token})
+    return res.status(StatusCodes.OK).json({ok: true, levelup: true, user, token, points: pointsToAdd})
   }
+  user.save();
   const token = user.createJWT();
-  return res.status(StatusCodes.OK).json({ok: true, levelup: false, user, token})
+  return res.status(StatusCodes.OK).json({ok: true, levelup: false, user, token, points: pointsToAdd})
 }
 
 module.exports = {
