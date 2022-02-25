@@ -21,7 +21,7 @@ function Aplikacija({}) {
 						break;
 					case "games":
 						iconName = "gamepad";
-						break;
+						break;/*zorane zora*/
 					case "biblioteka":
 						return <Ionicons name={"library"} size={size} color={color} />
 					default:
