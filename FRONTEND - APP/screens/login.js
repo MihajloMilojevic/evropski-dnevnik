@@ -1,10 +1,12 @@
 import React from "react";
 import {useState} from "react";
-import {View, Text, StyleSheet, Button, Pressable, Alert} from "react-native";
+import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground, Image, ColorPropType} from "react-native";
 import { TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
 import setUser from "../utils/setUser";
+import backSlika from "../assets/pozadine/loginBcg.png";
+import gornjaSlika from "../assets/slike/unlock.png";
 
 
 const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/login";
@@ -43,11 +45,11 @@ export default function Login({navigation}) {
 				}
 				else
 				{
-					Alert.alert("Greska", `Došlo je do greske. Probajte ponovo`);
+					Alert.alert("Greska", `Došlo je do greške. Probajte ponovo`);
 				}
 			}
 			else
-				Alert.alert("Greska", data.message);
+				Alert.alert("Greška", data.message);
 		} catch (error) {
 			console.error(error);
 		}
@@ -56,17 +58,22 @@ export default function Login({navigation}) {
 		navigation.replace("register")
 	}
 	return (
-		<View style={styles.container}>
-			<Text style={styles.header}>PRIJAVA</Text>
+		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
+			<Image
+				style={styles.slika}
+				source={gornjaSlika}
+			>
+			</Image>
+			<Text style={styles.header}>Prijavite se na nalog</Text>
 			
-			<Text>Email</Text>
 			<TextInput
+			placeholder={"mejl"}
 				style={styles.input}
 				keyboardType="email-address"
 				onChangeText={emailChange}
 			/>
-			<Text>Lozinka</Text>
 			<TextInput
+				placeholder={"šifra"}
 				style={styles.input}
 				secureTextEntry={passwordHidden}
 				onChangeText={passwordChange}
@@ -89,10 +96,10 @@ export default function Login({navigation}) {
 			<Text>Nemate nalog?</Text>
 			<Pressable
 				onPress={goToRegister}
-			>
-				<Text> Registrujte se.</Text>
-			</Pressable>
-		</View>
+				
+			><Text style={styles.register}>Registrujte se </Text></Pressable>
+			
+		</ImageBackground>
 	);
 }
 const styles = StyleSheet.create({
@@ -104,12 +111,23 @@ const styles = StyleSheet.create({
 	},
 	header: {
 		fontWeight: "bold",
-		fontSize: 20
+		fontSize: 20,
+		color: "#000",
+		textAlign: "center"
 	},
 	input: {
 		width: 200,
 		height: 30,
 		paddingBottom: 0,
-		paddingTop: 0
+		paddingTop: 0,
+		margin: 20
 	},
+	slika: {
+		width: 110,
+		height: 200
+	},
+	register: {
+		color: "#3268B8",
+		textDecorationLine: "underline"
+	}
   });
