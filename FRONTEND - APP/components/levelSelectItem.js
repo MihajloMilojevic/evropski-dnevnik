@@ -33,7 +33,9 @@ export default function LevelSelectItem({item, navigation}) {
 const styles = StyleSheet.create({
 	container: {
 	  flex: 1,
-	  backgroundColor: '#fff',
+	  background: rgb(205,205,205);
+background: radial-gradient(circle, rgba(205,205,205,1) 7%, rgba(3,22,121,1) 93%);
+	//  backgroundColor: '#fff',
 	  alignItems: 'center',
 	  justifyContent: 'center',
 	},
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
 	  //backgroundColor: "#6da0ed",
 	  //borderRadius: 30,
 	  aspectRatio: 1,
-	  color: "white",
+	  color: "black",
 	  width: 80
 	},
 	image: {
