@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
 	  color: "white"
 	},
 	textColor: {
-	  color: "white"
+	  color: "black"
 	}
   });
   
