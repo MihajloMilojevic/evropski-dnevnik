@@ -4,36 +4,31 @@ import {View, Text, StyleSheet, Button, Alert, Pressable, ImageBackground, Image
 import { removeUser } from "../../redux";
 import {useSelector, useDispatch} from "react-redux";
 import CustomButton from "../../components/customButton";
-import pozadina from "../../assets/pozadine/homepageBcg.png";
-import gornjaSlika from "../../assets/slike/logo1.png";
+import pozadina from "../../assets/pozadine/profilBcg.png";
 
-export default function Home({navigation})
+export default function Profil({navigation})
 {
 	const user = useSelector(state => state.user);
 	const dispatch = useDispatch();
 
-	{/*const logoutButton = async () => {
+	const logoutButton = async () => {
 		dispatch(removeUser())
 		Alert.alert("Uspeh", "Uspešno odjavljen")
 		navigation.replace("login")
-	}*/}
+	}
 
 	return (
 		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container}>
-			<Image
-				style={styles.slika}
-				source={gornjaSlika}
-			></Image>
-			<Text style={styles.zdravo}>Zdravo, {user.username}</Text>
-			<Text style={styles.tekst}>Koristi ikonice kako bi došao do: početne, kviza, uputstva i informacija o profilu</Text>
-			{/*<CustomButton
+			<Text style={styles.zdravo}>Profil igrača</Text>
+			<Text style={styles.tekst}>Ime: {user.username}</Text>
+			<Text style={styles.tekst}>Mejl: {user.email}</Text>
+			<Text style={styles.tekst}>Nivo: {user.level}</Text>
+			<Text style={styles.tekst}>Poeni: {user.points}</Text>
+			<CustomButton
 				title={"Izloguj se"}
 				onPress={logoutButton}
+                containerStyle={styles.dugme}
 			/>
-			<CustomButton
-				title={"Biblioteka"}
-				onPress={() => navigation.navigate("biblioteka")}
-			/>*/}
 		</ImageBackground>
 	);
 }
@@ -49,14 +44,13 @@ const styles = StyleSheet.create({
 		textAlign: "center",
 		fontSize: 24,
 		fontWeight: "bold",
+        marginBottom: 40,
 	},
-	slika: {
-		width: 200,
-		height: 200,
-	},
-	tekst: {
-		color: "#000",
-		textAlign: "center",
-		padding: 30,
-	}
+    tekst: {
+        color: "#000",
+        fontSize: 20,
+    },
+    dugme: {
+        marginTop: 40,
+    }
 })

@@ -1,11 +1,11 @@
 import React from "react";
 import {Text, StyleSheet, Pressable} from "react-native";
 
-export default function CustomButton({title, onPress, cointainerStyle, textStyle}) 
+export default function CustomButton({title, onPress, containerStyle, textStyle}) 
 {
     return (
     <Pressable
-        style={[styles.dugme, cointainerStyle]}
+        style={[styles.dugme, containerStyle]}
         onPress={onPress}>
         <Text style={[styles.tekst, textStyle]}>{title}</Text>
     </Pressable>

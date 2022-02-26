@@ -5,6 +5,7 @@ import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
 import { Home, Miths, Leaderboard } from ".";
 import Games from "./app/games";
+import Profil from "./app/profilInfo";
 const Tab = createBottomTabNavigator();
 
 function Aplikacija({}) {
@@ -48,6 +49,10 @@ function Aplikacija({}) {
 			<Tab.Screen 
 				name="leaderboard"
 				component={Leaderboard}
+			/>
+			<Tab.Screen 
+				name="profil"
+				component={Profil}
 			/>
 		</Tab.Navigator>
 	)
