@@ -22,8 +22,24 @@ export default function Uputstvo({navigation})
 			<Text style={styles.naslov}>UPUTSTVO</Text>
 			<Text style={styles.tekst}>Kliknite na naslov u delu koji vas zanima da bi videli kako se koristi aplikacija</Text>
 			<CollapseUputstvo
-				title={"Naslov"}
-				tekst={"Ovde ce da bude neki tekst koji objasnjava kako ce da se koristi nesto sto je opisano u naslovu. Ovo je struktura koju kasnije menjamo"}
+				title={"Početna strana"}
+				tekst={"Na početnoj strani pored dugmeta Uputstva možete videti i logo naše aplikacije..."}
+			/>
+			<CollapseUputstvo
+				title={"Lista igrača"}
+				tekst={"Na listi igrača su prikazani igrači i njihovi poeni, možete se takmičiti sa ostalima i osvojiti prvo mesto."}
+			/>
+			<CollapseUputstvo
+				title={"Strana sa igricama"}
+				tekst={"Klikom na zvezdicu ulazite na određebni nivo, ako je zvezdica plava znači da ste uspešno prešli nivo, ako je zlatna onda ga tek prelazite, a ako je izbledela za katancem odna Vam je nivo zaključan. Da biste otključali novi nivo potrebno je preći prethodni. Ispod su opisane sve vrste igara."}
+			/>
+			<CollapseUputstvo
+				title={"Mitovi"}
+				tekst={"Dobili ste karticu u kojoj stoji mit. Igra se bazira na Tačno - Netačno sistemu. Kada karticu povučete desno, odgovorili ste Tačno, u suprotnom odgovorili ste netačno. Poenta je da odgovorite da li je mit koji je na kartici tačan ili je netačan."}
+			/>
+			<CollapseUputstvo
+				title={"Kviz"}
+				tekst={"U kvizu je poenta da klikom na ponuđeni odgovor dođete do tačnog rešenja i pređete level."}
 			/>
 			<CustomButton 
 				title={"Nazad"} 
