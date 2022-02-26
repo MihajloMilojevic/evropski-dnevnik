@@ -52,10 +52,13 @@ opcija</Text>
 				<CustomButton
 					title={"Registruj se"}
 					onPress={goToRegister}
+					containerStyle={styles.dugme1}
 				/>
 				<CustomButton
 					title={"Prijavi se"}
 					onPress={goToLogin}
+					containerStyle={styles.dugme2}
+					textStyle={styles.dugme2tekst}
 				/>
 				<Text style={styles.textIspod}>Ne znate kako da koristite aplikaciju?</Text>
 				<Pressable
@@ -91,5 +94,21 @@ const styles = StyleSheet.create({
 	},
 	textIspod: {
 		marginTop: 30
+	},
+	dugme1: {
+		backgroundColor: '#3268B8',
+		width: 100
+	},
+	dugme2: {
+		backgroundColor: '#EBEBEB',
+		width: 100
+	},
+	dugme1tekst: {
+		textAlign: "center",
+		color: "#EBEBEB",
+	},
+	dugme2tekst: {
+		textAlign: "center",
+		color: "#000",
 	}
 })
