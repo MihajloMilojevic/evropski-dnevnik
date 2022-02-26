@@ -7,17 +7,19 @@ export default function CustomButton({title, onPress})
     <Pressable
         style={styles.dugme}
         onPress={onPress}>
-        <Text>{title}</Text>
+        <Text style={styles.tekst}>{title}</Text>
     </Pressable>
     )
 }
 
 const styles = StyleSheet.create({
     dugme: {
-        backgroundColor: '#6da0ed',
-        color: '#fff',
+        backgroundColor: '#3268B8',
         padding: 10,
         margin: 5,
         borderRadius: 5
+    },
+    tekst: {
+        color: "#fff",
     }
 })

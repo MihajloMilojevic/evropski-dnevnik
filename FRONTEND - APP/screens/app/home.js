@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import {View, Text, StyleSheet, Button, Alert, Pressable} from "react-native";
+import {View, Text, StyleSheet, Button, Alert, Pressable, ImageBackground, Image} from "react-native";
 import { removeUser } from "../../redux";
 import {useSelector, useDispatch} from "react-redux";
 import CustomButton from "../../components/customButton";
+import pozadina from "../../assets/pozadine/homepageBcg.png";
+import gornjaSlika from "../../assets/slike/logo1.png";
 
 export default function Home({navigation})
 {
@@ -17,17 +19,22 @@ export default function Home({navigation})
 	}
 
 	return (
-		<View style={styles.container}>
-			<Text>Zdravo, {user.username}</Text>
-			<CustomButton
+		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container}>
+			<Image
+				style={styles.slika}
+				source={gornjaSlika}
+			></Image>
+			<Text style={styles.zdravo}>Zdravo, {user.username}</Text>
+			<Text style={styles.tekst}>Koristi ikonice kako bi došao do: početne, kviza, uputstva i informacija o profilu</Text>
+			{/*<CustomButton
 				title={"Izloguj se"}
 				onPress={logoutButton}
 			/>
 			<CustomButton
 				title={"Biblioteka"}
 				onPress={() => navigation.navigate("biblioteka")}
-			/>
-		</View>
+			/>*/}
+		</ImageBackground>
 	);
 }
 const styles = StyleSheet.create({
@@ -37,4 +44,19 @@ const styles = StyleSheet.create({
 	  alignItems: 'center',
 	  justifyContent: 'center',
 	},
+	zdravo: {
+		color: "#000",
+		textAlign: "center",
+		fontSize: 24,
+		fontWeight: "bold",
+	},
+	slika: {
+		width: 200,
+		height: 200,
+	},
+	tekst: {
+		color: "#000",
+		textAlign: "center",
+		padding: 30,
+	}
 })
