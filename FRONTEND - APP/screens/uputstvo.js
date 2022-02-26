@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {View, Text, StyleSheet, Button, Alert, Pressable, ImageBackground, Image} from "react-native";
+import CollapseUputstvo from "../components/collapseUputstvo";
 import {useSelector, useDispatch} from "react-redux";
 import CustomButton from "../components/customButton";
-import pozadina from "../assets/pozadine/homepageBcg.png";
-import gornjaSlika from "../assets/slike/logo1.png";
+import pozadina from "../assets/pozadine/loadBcg.png";
 
 export default function Uputstvo({navigation})
 {
@@ -19,22 +19,17 @@ export default function Uputstvo({navigation})
 
 	return (
 		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container}>
-			<Text>UPUTSTVO</Text>
-			<CustomButton title={"nazad"} onPress={() => {
-				navigation.goBack()
-			}}/>
-			{/*
-			<Image
-				style={styles.slika}
-				source={gornjaSlika}
-			></Image>
-			<Text style={styles.zdravo}>Zdravo, {user.username}</Text>
-			<Text style={styles.tekst}>Koristi ikonice kako bi došao do: početne, kviza, uputstva i informacija o profilu</Text>
-			<CustomButton
-				title={"Uputstvo"}
-				onPress={() => navigation.navigate("uputstvo")}
+			<Text style={styles.naslov}>UPUTSTVO</Text>
+			<Text style={styles.tekst}>Kliknite na naslov u delu koji vas zanima da bi videli kako se koristi aplikacija</Text>
+			<CollapseUputstvo
+				title={"Naslov"}
+				tekst={"Ovde ce da bude neki tekst koji objasnjava kako ce da se koristi nesto sto je opisano u naslovu. Ovo je struktura koju kasnije menjamo"}
 			/>
-			*/}
+			<CustomButton 
+				title={"Nazad"} 
+				onPress={() => {navigation.goBack()}}
+				containerStyle={styles.dugme}
+			/>
 		</ImageBackground>
 	);
 }
@@ -42,22 +37,21 @@ const styles = StyleSheet.create({
 	container: {
 	  flex: 1,
 	  backgroundColor: '#fff',
-	  alignItems: 'center',
+	  alignItems: "center",
 	  justifyContent: 'center',
 	},
-	zdravo: {
-		color: "#000",
-		textAlign: "center",
+	dugme: {
+		alignSelf: "center",
+	},
+	naslov: {
 		fontSize: 24,
 		fontWeight: "bold",
-	},
-	slika: {
-		width: 200,
-		height: 200,
+		alignSelf: "center"
 	},
 	tekst: {
-		color: "#000",
 		textAlign: "center",
-		padding: 30,
+		paddingLeft: 40,
+		paddingRight: 40,
+		marginBottom: 20,
 	}
 })
