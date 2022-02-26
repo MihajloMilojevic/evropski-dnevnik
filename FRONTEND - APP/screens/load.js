@@ -61,11 +61,6 @@ opcija</Text>
 					containerStyle={styles.dugme2}
 					textStyle={styles.dugme2tekst}
 				/>
-				<Text style={styles.textIspod}>Ne znate kako da koristite aplikaciju?</Text>
-				<Pressable
-
-					
-				><Text style={styles.uputstvo}>Pogledajte upustvo</Text></Pressable>
 			</ImageBackground>
 		)
 
