@@ -21,6 +21,9 @@ export default function Games({navigation}) {
             <Stack.Screen 
                 name="select"
                 component={LevelSelect}
+                options={{
+					unmountOnBlur: true
+				}}
             />
             <Stack.Screen 
                 name="mith"

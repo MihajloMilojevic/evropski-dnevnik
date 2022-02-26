@@ -23,6 +23,9 @@ function Aplikacija({}) {
 					case "games":
 						iconName = "gamepad";
 						break;
+					case "profil":
+						iconName = "user";
+						break;
 					case "leaderboard":
 						return <MaterialIcons name={"leaderboard"} size={size} color={color} />
 					default:
