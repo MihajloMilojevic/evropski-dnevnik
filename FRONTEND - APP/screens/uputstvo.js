@@ -19,6 +19,11 @@ export default function Uputstvo({navigation})
 
 	return (
 		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container}>
+			<Text>UPUTSTVO</Text>
+			<CustomButton title={"nazad"} onPress={() => {
+				navigation.goBack()
+			}}/>
+			{/*
 			<Image
 				style={styles.slika}
 				source={gornjaSlika}
@@ -29,14 +34,7 @@ export default function Uputstvo({navigation})
 				title={"Uputstvo"}
 				onPress={() => navigation.navigate("uputstvo")}
 			/>
-			{/*<CustomButton
-				title={"Izloguj se"}
-				onPress={logoutButton}
-			/>
-			<CustomButton
-				title={"Biblioteka"}
-				onPress={() => navigation.navigate("biblioteka")}
-			/>*/}
+			*/}
 		</ImageBackground>
 	);
 }

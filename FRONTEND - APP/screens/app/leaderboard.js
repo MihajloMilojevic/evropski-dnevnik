@@ -1,16 +1,49 @@
-import { View, Text, StyleSheet } from "react-native";
+import { useState, useEffect } from "react";
+import { View, Text, StyleSheet, Alert, FlatList, StatusBar } from "react-native";
+import {Grid, Row} from "react-native-easy-grid";
+import LeaderbeardItem from "../../components/leaderBoardItem";
+
+const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/leaderboard";
 
 export default function Leaderboard({ navigation }) {
+
+    const [data, setData] = useState([])
+
+
+    const fetchData = async () => {
+        try {
+            const res = await fetch(URL);
+            const json = await res.json();
+            if(!json.ok)
+            {
+                Alert.alert("Greška", json.message);
+                return navigation.navigate("home");
+            }
+            setData(json.users);
+        } catch (error) {
+            Alert.alert("Greška", "Došlo je do greške, probajte ponovo kasnije.");
+            navigation.navigate("home");
+        }
+    }
+
+    const renderItem = ({item, index}) => <LeaderbeardItem key={index} rank={index + 1} user={item}/>
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
     return (
         <View style={styles.container}>
-            <Text>Dobrodošao u biblioteku</Text>
-            <View style={styles.red}>
-                <Text>Ovo je prvi red</Text>
-            </View>
+            <Text style={styles.text}>TOP 100</Text>
+            <FlatList
+                style={{
+                    width: "100%"
+                }}
+                data={data}
+                renderItem={renderItem}
+            />
         </View>
     )
-
-
 }
 
 const styles = StyleSheet.create({
@@ -19,10 +52,13 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "dodgerblue",
+        paddingTop: StatusBar.currentHeight
+        //backgroundColor: "dodgerblue",
     },
-    red: {
-        top: 1,
-
+    text: {
+        color: "black",
+        fontSize: 50,
+        fontWeight: "bold",
+        fontStyle: "italic"
     }
 })

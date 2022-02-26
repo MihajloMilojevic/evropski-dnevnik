@@ -28,7 +28,7 @@ export default function Home({navigation})
 			<Text style={styles.tekst}>Koristi ikonice kako bi došao do: početne, kviza, uputstva i informacija o profilu</Text>
 			<CustomButton
 				title={"Uputstvo"}
-				onPress={() => navigation.navigate("")}
+				onPress={() => navigation.navigate("uputstvo")}
 			/>
 			{/*<CustomButton
 				title={"Izloguj se"}

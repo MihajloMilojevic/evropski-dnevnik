@@ -48,6 +48,9 @@ function Aplikacija({}) {
 			/>
 			<Tab.Screen 
 				name="leaderboard"
+				options={{
+					unmountOnBlur: true
+				}}
 				component={Leaderboard}
 			/>
 			<Tab.Screen 
