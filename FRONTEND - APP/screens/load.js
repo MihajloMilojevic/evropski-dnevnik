@@ -101,7 +101,9 @@ const styles = StyleSheet.create({
 	},
 	dugme2: {
 		backgroundColor: '#EBEBEB',
-		width: 100
+		width: 100,
+		borderColor: "#3268B8",
+		borderWidth: 2
 	},
 	dugme1tekst: {
 		textAlign: "center",
