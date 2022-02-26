@@ -64,9 +64,7 @@ export default function Register({navigation}) {
 				style={styles.slika}
 				source={gornjaSlika}
 			></Image>
-			<Text style={styles.header}>Dobrodošli, izaberite
-jednu od ponuđenih
-opcija</Text>
+			<Text style={styles.header}>Otvorite svoj nalog</Text>
 			<TextInput
 				style={styles.input}
 				onChangeText={usernameChange}

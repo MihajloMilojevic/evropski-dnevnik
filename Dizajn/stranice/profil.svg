@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="760" viewBox="0 0 360 760">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 48 48">
+      <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAB3klEQVRYw+1Vu04CQRQ9grES5dFogY9EaGjoSEg0JBaGWFLRacUXGBKN8htUNFBhY6HhC4TaBiVgA1sBUeKLxChj4WUZdmd3Z7fT7JmCndlzz2EuZwbAhQsX/xdxFNHEGExijNFEEXF58WWUpIS1o4RlGXkfGo7kGRga8FkbVBzLMzBUrOSTKrWFDEJSLQ0hg5ZalzQnl4nWxIqtUKzigSrL5kSFaAfqCgMTMtPooYe0Oj+kSsVMPkikFyxaGnTBwNBV50v4oOogT/PMFe3QZxtftk/OJx41KiYGHQnBHBQoyHErHWuDCEedpgKa5ylqCCOMmsAgItMiJ2jba9ECDWiejdMkbNE8htSKNW7NKEX6NG1Q9dCIGlBDCkcGHvX2DYhbZCdDojRNxEGdIUv+Vcf/IlekkBXvIOJoBzAPqscipAmMTK/nERJWQZ2hTkW70vJai31aq4sNBvR63Yb8vMUmrQxE8n56+WpTnreYBdWvN4jRqzudfMHwRy3oLO5pHtOTo+o53EKKk78wzQ1vkcI2nmgW1VO96As2f24ZzYKgqg+viJrXEc+k0q+3yIuJXlxypG+cSB+wU0y4yqr4+/9ey8eo4x3PuMaerTOcwg1GeMMtjgyudRcuXPxh/ADgOK4bvpY3HAAAAABJRU5ErkJggg=="/>
+    </pattern>
+    <pattern id="pattern-2" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 48 48">
+      <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAjUlEQVRYw+2WMQ7AIAhFuYfn52g6eYfaDi42RhBoavI/k1F4Bv4AEfRnJWIqdCmj3FlJVr6qi/eoEgRvl3+C14BsAuQ1oD/VSpwHwPJidp4FAPGA8CHDRXDRgS4C4HvA+S46D+C+eI0A99VxBLgvv+/eOa/vu0O1Tx8AH98LPsbRAIvvha3d83347CCrGv9iOhlnjsQJAAAAAElFTkSuQmCC"/>
+    </pattern>
+    <pattern id="pattern-3" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 48 48">
+      <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABNklEQVRYw+2UsWoCQRRFT2UVKxHEWG8iFvmFYGEvpFmbtIH8hI2F1Tb7FxLbpFnQb3D9Aa1FUAsLcdKMww6ou2Z2DOLc2z3uu5d9b+eBg4NDdjQImLJmzZSARr7mBUJ2iAR3hBTys4808wOjvCLCo/YCQZjP7A/DmeNToYLPXA0qh10Eyr6kaiUVEZgHxNLK16q+rMbmAStpVdWqVVld3UCA9RFZX7L139T6Q7vCqbB+7K5wrh3+G2Xa9BkyYYZAMGPCkD5tyqbWdbrqFh1nTJf638xbjM5aJzmidZl57cTbPceIWlb7JgutdcuYHm+88Ag84PHKOz3GbDXdgmYWe4+NatnzQ4fiSW2RDt/slX6Dlx4wUPIvnjN98VOiZ5AuX0rp50Vb+5Bdy3SpMKQLMA9wcLg//AKtHZUqCuWB2gAAAABJRU5ErkJggg=="/>
+    </pattern>
+    <pattern id="pattern-4" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 48 48">
+      <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABGElEQVRYw+1UMRLBUBRcM1SURm3GARROoHCFFO6gcQmNQyicQeEEChcwepNWKilM7DeT7wWRn59QmLfb/P/eZjcpNoBC8Vs0sCQb37JvYY2EXPP0BXSwvdsbbnmrGT3srb3hnpMaMcAxY2945LQmjBBa2x2ZnkNuasAEkbXcoE1u7D3itiKmiK3dCs37rMlTOoupqIA5rtZqkdks7PxKlXepHiazl/1MhHuULy2V4QXBW03ATaopWT5ZqjPGuboxtx7lk6U6YfhRO6SiZPlkqQ7oF+r7VJUonyxVgq7TF3fFEwXlk6UydIV85kP5ZKn8A3LLJ0tVLcChfM8BSQ7z9M5vpAGlA1zvGqAB/xRQVCzfn6MGKBSKLG5UCfOQ7+6srgAAAABJRU5ErkJggg=="/>
+    </pattern>
+    <clipPath id="clip-Samsung_Galaxy_S10_6">
+      <rect width="360" height="760"/>
+    </clipPath>
+  </defs>
+  <g id="Samsung_Galaxy_S10_6" data-name="Samsung Galaxy S10 – 6" clip-path="url(#clip-Samsung_Galaxy_S10_6)">
+    <rect width="360" height="760" fill="#ebebeb"/>
+    <path id="Path_55" data-name="Path 55" d="M1520.172,428.13c-124.1,115.409-117.891,187.385-187.385,222.131S1121.825,775.6,1121.825,775.6" transform="translate(-1140.999 -261)" fill="none" stroke="#b2a10c" stroke-width="3"/>
+    <g id="Group_6" data-name="Group 6">
+      <rect id="Rectangle_10" data-name="Rectangle 10" width="360" height="50" transform="translate(0 710)" fill="#d9d9d9"/>
+      <rect id="games" width="45" height="47" transform="translate(113 713)" fill="url(#pattern)"/>
+      <rect id="library" width="37" height="36" transform="translate(203 717)" fill="url(#pattern-2)"/>
+      <rect id="person" width="44" height="43" transform="translate(285 714)" fill="url(#pattern-3)"/>
+      <rect id="home" width="36" height="36" transform="translate(32 717)" fill="url(#pattern-4)"/>
+    </g>
+    <text id="Profil_igrača" data-name="Profil igrača" transform="translate(180 81)" font-size="24" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="-74.592" y="0">Profil igrača</tspan></text>
+    <text id="Ime:_Shuky" data-name="Ime: Shuky" transform="translate(7.5 218)" font-size="22" font-family="Poppins-Regular, Poppins"><tspan x="0" y="0">Ime: Shuky</tspan></text>
+    <text id="Nivo:_1" data-name="Nivo: 1" transform="translate(7.5 320)" font-size="22" font-family="Poppins-Regular, Poppins"><tspan x="0" y="0">Nivo: 1</tspan></text>
+    <text id="Mejl:_vojinsundovic_gmail.com" data-name="Mejl: vojinsundovic@gmail.com" transform="translate(7.5 269)" font-size="22" font-family="Poppins-Regular, Poppins"><tspan x="0" y="0">Mejl: vojinsundovic@gmail.com</tspan></text>
+  </g>
+</svg>
