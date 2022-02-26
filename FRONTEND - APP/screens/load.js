@@ -53,6 +53,7 @@ opcija</Text>
 					title={"Registruj se"}
 					onPress={goToRegister}
 					containerStyle={styles.dugme1}
+					textStyle={styles.dugme1tekst}
 				/>
 				<CustomButton
 					title={"Prijavi se"}
