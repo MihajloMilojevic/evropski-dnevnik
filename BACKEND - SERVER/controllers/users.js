@@ -52,9 +52,9 @@ const register = async (req, res) => {
 
 const passLevel = async (req, res) => {
   const user = await User.findById(req.user.userId).select("-password");
-  console.log(user);
+  //console.log(user);
   const passedLevel = Number(req.params.level);
-  let pointsToAdd = (passLevel - 1) / 4 + 1;
+  let pointsToAdd = parseInt((passedLevel - 1) / 4) + 1;
   user.points += pointsToAdd;
   if(user.level == passedLevel)
   {
@@ -63,6 +63,7 @@ const passLevel = async (req, res) => {
     pointsToAdd += 2;
     await user.save();
     const token = user.createJWT();
+    console.log(pointsToAdd)
     return res.status(StatusCodes.OK).json({ok: true, levelup: true, user, token, points: pointsToAdd})
   }
   user.save();
@@ -70,8 +71,15 @@ const passLevel = async (req, res) => {
   return res.status(StatusCodes.OK).json({ok: true, levelup: false, user, token, points: pointsToAdd})
 }
 
+
+const leaderboard = async (req, res) => {
+  const users = await User.find({}).sort("-points").select("username points").limit(100);
+  res.status(StatusCodes.OK).json({ok: true, users})
+}
+
 module.exports = {
   register,
   login,
-  passLevel
+  passLevel,
+  leaderboard
 }

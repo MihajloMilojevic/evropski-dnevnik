@@ -9,16 +9,18 @@
 <body>
 	<label>Naslov</label>
 	<textarea id="title"></textarea><br>
-    <input type="file" id="img" name="img" accept="image/*">
+    <label>RELATIVNI URL SLIKE</label>
+    <input type="text" id="img" name="img">
+    <div class="dodajodg">
+        <button id="dodaj">Dodaj odgovor</button>
+    </div>
+    <label>Ponudjeni odgovori(čekirati tačan)</label><br>
     <div id="odgovori">
 
     </div>
-    <div class="dodajodg">
-        <button id="dodaj" onclick="addAnswer()">Dodaj</button>
-    </div>
     <br>
 
-	<button id="create" onclick="kreiraj()">Kreiraj</button>
+	<button id="create">Kreiraj</button>
 
     <script src="quiz.js"></script>
 	

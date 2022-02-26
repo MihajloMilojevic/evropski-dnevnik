@@ -1,25 +1,32 @@
 let check = document.getElementById("slikaCheck");
+document.getElementById("dodaj").onclick = addAnswer;
+document.getElementById("create").onclick = kreiraj;
 
-const addAnswer = async () => {
+let brojOdgovora = 0;
+
+function addAnswer() {
 
     let control = document.createElement("div");
     let polje = document.createElement("input");
     let radio = document.createElement("input");
     control.id = "control";
-
+    
     polje.type = "text";
-    polje.id = "odgovor"
-
+    polje.name = "odgovor"
+    
     radio.type = "radio";
-    radio.id = "correct";
-
+    radio.value = brojOdgovora;
+    radio.name = "tacno";
+    
     control.appendChild(polje);
     control.appendChild(radio);
-
-
+    
+    
     document.getElementById("odgovori").appendChild(control);
+    brojOdgovora++;
 }
 
-const kreiraj = async () => {
-
-}
+async function kreiraj() {
+    console.log(document.querySelectorAll("input[name=odgovor]"));
+    console.log(document.querySelectorAll("input[name=tacno]"));
+}   
