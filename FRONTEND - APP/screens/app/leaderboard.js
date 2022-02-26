@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Library({ navigation }) {
+export default function Leaderboard({ navigation }) {
     return (
         <View style={styles.container}>
             <Text>Dobrodošao u biblioteku</Text>

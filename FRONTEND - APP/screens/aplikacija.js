@@ -1,9 +1,9 @@
 import React from "react";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 
-import { Home, Miths, Library } from ".";
+import { Home, Miths, Leaderboard } from ".";
 import Games from "./app/games";
 const Tab = createBottomTabNavigator();
 
@@ -21,9 +21,9 @@ function Aplikacija({}) {
 						break;
 					case "games":
 						iconName = "gamepad";
-						break;/*zorane zora*/
-					case "biblioteka":
-						return <Ionicons name={"library"} size={size} color={color} />
+						break;
+					case "leaderboard":
+						return <MaterialIcons name={"leaderboard"} size={size} color={color} />
 					default:
 						iconName = "undo";
 						break;
@@ -46,8 +46,8 @@ function Aplikacija({}) {
 				component={Games}
 			/>
 			<Tab.Screen 
-				name="biblioteka"
-				component={Library}
+				name="leaderboard"
+				component={Leaderboard}
 			/>
 		</Tab.Navigator>
 	)
