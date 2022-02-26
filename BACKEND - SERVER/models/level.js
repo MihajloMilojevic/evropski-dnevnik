@@ -10,7 +10,7 @@ const levelSchema = new mongoose.Schema({
 	},
     type: {
         type: String,
-        enum: ["mith", "quiz", "image"]
+        enum: ["mith", "quiz", "image", "memory"]
     }
 })
 

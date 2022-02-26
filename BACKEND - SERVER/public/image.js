@@ -47,6 +47,11 @@ async function kreiraj() {
     }
     const question = document.getElementById("question").value;
     const level = document.getElementById("level").value;
+	const image = "/images/" + document.getElementById("image").value;
+	if(!image) {
+		alert("Slika je obavezna");
+		return;
+	}
     create.disabled = true;
 	try {
 		const res = await fetch(URL, {
@@ -55,11 +60,12 @@ async function kreiraj() {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
-                type: "quiz",
+                type: "image",
 				question,
                 answers,
                 correct: index[0].value,
-				level
+				level,
+				image
 			})
 		})
 		const data = await res.json();
@@ -76,4 +82,6 @@ async function kreiraj() {
 	finally {
 		create.disabled = false;
 	}
+
+
 }   

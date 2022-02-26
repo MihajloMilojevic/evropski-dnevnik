@@ -1,9 +1,13 @@
+import host from "./HOSTURL.js";
+
 const ID = id => {return document.getElementById(id)};
-const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/miths"
+const URL = host + "/api/games/mith"
+// const URL = "http://localhost:3000/api/games/mith"
 
 const title = ID("title");
 const correct = ID("correct");
 const desc = ID("description");
+const level = ID("level");
 const create = ID("create");
 console.log(title);
 
@@ -18,7 +22,8 @@ const createMith = async () => {
 			body: JSON.stringify({
 				title: title.value,
 				correct: Boolean(correct.value),
-				description: desc.value
+				description: desc.value,
+				level: level.value
 			})
 		})
 		const data = await res.json();

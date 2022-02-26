@@ -1,0 +1,1 @@
+export default "https://evropski-dnevnik-dev.herokuapp.com"
