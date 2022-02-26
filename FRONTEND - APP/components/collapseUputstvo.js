@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
         paddingRight: 20,
 	},
     prozor: {
-        marginBottom: 40,
+        marginBottom: 10,
     }
 })
