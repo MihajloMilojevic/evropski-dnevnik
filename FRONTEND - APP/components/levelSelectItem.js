@@ -33,10 +33,13 @@ export default function LevelSelectItem({item, navigation, level}) {
 	  <Pressable 
 		style={styles.element}
 		onPress={async () => {
+			if(level > user.level) {
+				Alert.alert("Zaključano", "Prvo pređite sve prethodne nivoe");
+				return;
+			}
 			try {
 				const res = await fetch(URL + level);
 				const json = await res.json();
-				console.log(json);
 				if(!json.ok)
 				{
 					Alert.alert("Greška", "RESPONSE ERROR");
