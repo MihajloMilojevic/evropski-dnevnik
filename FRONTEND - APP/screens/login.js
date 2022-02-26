@@ -2,7 +2,7 @@ import React from "react";
 import {useState} from "react";
 import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground, Image, ColorPropType} from "react-native";
 import { TextInput } from "react-native-paper";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setUser} from "../redux";
 import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
@@ -10,14 +10,15 @@ import backSlika from "../assets/pozadine/loginBcg.png";
 import gornjaSlika from "../assets/slike/unlock.png";
 
 
-const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/login";
 
 export default function Login({navigation}) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
-
+	
 	const dispatch = useDispatch();
+	const host = useSelector(state => state.host)
+	const URL = host + "/api/users/login";
 
 	const emailChange = newEmail => {
 		setEmail(newEmail);

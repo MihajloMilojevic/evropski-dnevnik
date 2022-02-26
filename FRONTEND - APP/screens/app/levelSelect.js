@@ -11,7 +11,7 @@ export default function LevelSelect({navigation}) {
 	const [mounted, setMounted] = useState(false)
 
 	const keyExtractor = () => (Math.random() * 1000).toString(36);
-    const renderItem = ({ item }) => <LevelSelectItem navigation={navigation} item={item} />
+    const renderItem = ({ item }) => <LevelSelectItem navigation={navigation} item={item} level={item.value}/>
 	const data = [
 		{ value: 1},
 		{ value: 2},

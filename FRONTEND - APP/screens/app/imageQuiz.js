@@ -1,20 +1,46 @@
 import { Alert, StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import Answer from "../../components/odgovor";
+import { useDispatch, useSelector } from 'react-redux';
+import {setUser} from "../../redux";
 
 function ImageQuiz({navigation, route}) {
-	const quiz = route.params;
+	
+	const host = useSelector(state => state.host);
+	const user = useSelector(state => state.user);
+	const dispatch = useDispatch();
+
+	const quiz = route.params.image;
+	const level = route.params.level;
 	const answer = (index) => {
 		return () => {
 			if(index === quiz.correct)
 			{
-				Alert.alert("Tacno", "Pogodili ste");
-				navigation.goBack();
+				(async () => {
+					try {
+					  const res = await fetch(host + "/api/users/level/pass/" + level, {
+						headers: {
+						  "Authorization": "Bearer " + user.token
+						}
+					  })
+					  const json = await res.json();
+					  if(json.ok) 
+						dispatch(setUser({...json.user, token: json.token}));
+					} catch (error) {
+					  
+					}
+				})()
+				Alert.alert("Tacno", "Pogodili ste", [{
+						text: "OK",
+						onPress: () => navigation.goBack()
+					}]);
 			}
 			else
-			{
-				Alert.alert("Pogrešno", "Promašili ste");
-				navigation.goBack();
-			}
+				Alert.alert("Pogrešno", "Promašili ste", [
+					{
+						text: "OK",
+						onPress: () => navigation.goBack()
+					}
+				]);
 		}
 	}
 	return (
@@ -24,7 +50,7 @@ function ImageQuiz({navigation, route}) {
 			</View>
 			<View style={styles.slikaContainer}>
 				<Image
-					source={{uri: quiz.image}}
+					source={{uri: host + quiz.image}}
 					resizeMode={"contain"}
 					style={styles.slika}
 				/>

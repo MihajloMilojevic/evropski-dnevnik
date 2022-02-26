@@ -1,21 +1,66 @@
 import { Pressable, ImageBackground, Text, StyleSheet, Alert } from "react-native";
-import starImage from "../assets/star.png";
-import levelsDev from "../levelsDev.json";
+import {passed, current, locked} from "../assets/zvezde";
+import {useSelector} from "react-redux";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
+export default function LevelSelectItem({item, navigation, level}) {
 
-export default function LevelSelectItem({item, navigation}) {
+	const user = useSelector(state => state.user);
+	const host = useSelector(state => state.host);
+
+	const URL = host + "/api/levels/";
+
+	let starImage;
+	let color;
+	let islocked = false;
+	if(level < user.level)
+	{
+		starImage = passed;
+		color = "#3268B8"
+	}
+	else if(level > user.level)
+	{
+		starImage = locked;
+		color = "#3268B8"
+		islocked = true;
+	}
+	else
+	{
+		starImage = current
+		color = "#AF9E00"
+	}
 	return (
 	  <Pressable 
 		style={styles.element}
-		onPress={() => {
-			if(item.value % 4 === 0)
-				return navigation.navigate("mith", levelsDev.mith);
-			if(item.value % 4 === 1)
-				return navigation.navigate("quiz", levelsDev.quiz);
-			if(item.value % 4 === 2)
-				return navigation.navigate("image", levelsDev.image);
-			if(item.value % 4 === 3)
-				return navigation.navigate("memory", levelsDev.memory);
+		onPress={async () => {
+			try {
+				const res = await fetch(URL + level);
+				const json = await res.json();
+				console.log(json);
+				if(!json.ok)
+				{
+					Alert.alert("Greška", "RESPONSE ERROR");
+					return;
+				}
+				switch (json.type) {
+					case "mith":
+						navigation.navigate("mith", {mith: json.mith, level})
+						break;
+					case "quiz":
+						navigation.navigate("quiz", {quiz: json.quiz, level})
+						break;
+					case "image":
+						navigation.navigate("image", {image: json.quiz, level})
+						break;
+					case "memory":
+						navigation.navigate("memory", {memory: json.memory, level})
+						break;
+					default:
+						break;
+				}
+			} catch (error) {
+				Alert.alert("Greška", "Došlo je do greške, probajte ponovo kasnije");
+			}
 		}}
 	  >
 		<ImageBackground
@@ -23,7 +68,9 @@ export default function LevelSelectItem({item, navigation}) {
 		  resizeMode="cover" 
 		  style={styles.image}
 		>
-		  <Text style={styles.textColor}>{item.value}</Text>
+		  {
+			  islocked ? <FontAwesome name="lock" size={20} color={color}/> : <Text style={{ color }}>{item.value}</Text>
+		  }
 		</ImageBackground>
 	  </Pressable>
 	)
@@ -51,8 +98,5 @@ const styles = StyleSheet.create({
 	  alignItems: "center",
 	  color: "white"
 	},
-	textColor: {
-	  color: "blue"
-	}
   });
   

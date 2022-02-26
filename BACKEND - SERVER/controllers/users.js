@@ -54,6 +54,8 @@ const passLevel = async (req, res) => {
   const user = await User.findById(req.user.userId).select("-password");
   //console.log(user);
   const passedLevel = Number(req.params.level);
+  if(isNaN(passedLevel) || passedLevel < 1 || passedLevel > 12)
+    throw new BadRequestError("Nevažeči level");
   let pointsToAdd = parseInt((passedLevel - 1) / 4) + 1;
   user.points += pointsToAdd;
   if(user.level == passedLevel)
@@ -73,7 +75,7 @@ const passLevel = async (req, res) => {
 
 
 const leaderboard = async (req, res) => {
-  const users = await User.find({}).sort("-points").select("username points").limit(100);
+  const users = await User.find({}).sort("-points").select("username points _id").limit(100);
   res.status(StatusCodes.OK).json({ok: true, users})
 }
 

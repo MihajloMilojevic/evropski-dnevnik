@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Alert, FlatList, StatusBar } from "react-native";
-import {Grid, Row} from "react-native-easy-grid";
+import {useSelector} from "react-redux";
 import LeaderbeardItem from "../../components/leaderBoardItem";
 
-const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/leaderboard";
 
 export default function Leaderboard({ navigation }) {
-
+    
     const [data, setData] = useState([])
-
+    
+	const host = useSelector(state => state.host)
+    const URL = host + "/api/users/leaderboard";
 
     const fetchData = async () => {
         try {
@@ -26,21 +27,22 @@ export default function Leaderboard({ navigation }) {
         }
     }
 
-    const renderItem = ({item, index}) => <LeaderbeardItem key={index} rank={index + 1} user={item}/>
-
+    const renderItem = ({item, index}) => <LeaderbeardItem rank={index + 1} user={item}/>
     useEffect(() => {
         fetchData()
     }, [])
 
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>TOP 100</Text>
+            <Text style={styles.text}>TOP PLAYERS</Text>
             <FlatList
                 style={{
-                    width: "100%"
+                    width: "100%",
+                    marginBottom: 30
                 }}
                 data={data}
                 renderItem={renderItem}
+                keyExtractor={item => item._id}
             />
         </View>
     )

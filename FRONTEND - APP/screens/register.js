@@ -4,21 +4,22 @@ import {View, Text, StyleSheet, Button, Pressable, Alert, ImageBackground, Image
 import { Colors, TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setUser} from "../redux";
 import backSlika from "../assets/pozadine/registerBcg.png";
 import gornjaSlika from "../assets/slike/register.png";
 
-const URL = "https://evropski-dnevnik-dev.herokuapp.com/api/users/register";
 
 export default function Register({navigation}) {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
-
+	
 	const dispatch = useDispatch();
+	const host = useSelector(state => state.host)
 
+	const URL = host + "/api/users/register";
 	const usernameChange = newUsername => {
 		setUsername(newUsername);
 	}

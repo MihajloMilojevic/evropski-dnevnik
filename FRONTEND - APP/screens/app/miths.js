@@ -1,21 +1,42 @@
 import React, {useRef, useState, useEffect} from "react";
 import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert, Text } from "react-native";
 import MithCard from "../../components/mithCard";
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import {setUser} from "../../redux";
 
 export default function Miths({navigation, route})
 {
-	const [mith, setMith] = useState(route.params);
-	
+	const [mith, setMith] = useState(route.params.mith);
+	const level = route.params.level;
+
+	const host = useSelector(state => state.host);
+	const user = useSelector(state => state.user);
+	const dispatch = useDispatch();
+
 	const dimensions = useWindowDimensions();
 	const translate = useRef(new Animated.Value(0)).current;	
 
-	const onGuess = (guess) => {
+	const onGuess = async (guess) => {
 		if(!mith) return;
 		let naslov;
 		if(guess === mith.correct)
+		{
 			naslov = "Tačno";
+			(async () => {
+                try {
+                  const res = await fetch(host + "/api/users/level/pass/" + level, {
+                    headers: {
+                      "Authorization": "Bearer " + user.token
+                    }
+                  })
+                  const json = await res.json();
+                  if(json.ok) 
+                    dispatch(setUser({...json.user, token: json.token}));
+                } catch (error) {
+                  
+                }
+              })()
+		}
 		else
 			naslov = "Pogrešno";
 		Alert.alert(naslov, 

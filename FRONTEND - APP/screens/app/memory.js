@@ -4,21 +4,24 @@ import {
   StyleSheet,
   ImageBackground,
   Alert,
+  StatusBar,
 } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 import CardFlip from 'react-native-card-flip';
+import { useDispatch, useSelector } from 'react-redux';
+import {setUser} from "../../redux";
 
 class Memory extends React.Component {
 
   constructor(props) {
-    super(props); 
+    super(props);
     // console.log(this.props)
-    this.EU = "https://iliad-solutions.com/wp-content/uploads/2017/08/EU.jpg";
-    this.table = this.copyTable(this.props.route.params.table)
-    this.urls = [...this.props.route.params.urls];
+    this.EU = this.props.host + "/images/EU.png"
+    this.table = this.copyTable(this.props.route.params.memory.table)
+    this.urls = [...this.props.route.params.memory.urls];
     this.state = {
-      table: this.copyTable(this.props.route.params.table),
+      table: this.copyTable(this.props.route.params.memory.table),
       open: []
     }
 
@@ -32,6 +35,7 @@ class Memory extends React.Component {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
+        marginTop: StatusBar.currentHeight
       },
       cardContainer: {
         width: "100%",
@@ -138,8 +142,26 @@ class Memory extends React.Component {
           },
           () => {
             if(this.win()) {
-              Alert.alert("Pobeda", "Pobedio si");
-              this.props.navigation.navigate("select")
+              (async () => {
+                try {
+                  const res = await fetch(this.props.host + "/api/users/level/pass/" + this.props.route.params.level, {
+                    headers: {
+                      "Authorization": "Bearer " + this.props.user.token
+                    }
+                  })
+                  const json = await res.json();
+                  if(json.ok) 
+                    this.props.dispatch(setUser({...json.user, token: json.token}));
+                } catch (error) {
+                  
+                }
+              })()
+              Alert.alert("Pobeda", "Pobedio si", [
+                {
+                  text: "OK",
+                  onPress: () => this.props.navigation.goBack()
+                }
+              ]);
             }
           })
           return;
@@ -185,7 +207,7 @@ class Memory extends React.Component {
                           style={[this.styles.card, this.styles.card2]}
                           onPress={onClick(rowIndex, colIndex)}>
                           <ImageBackground
-                            source={{uri: this.urls[col]}}
+                            source={{uri: this.props.host + this.urls[col]}}
                             style={this.styles.image}
                             resizeMode={"cover"}
                           />
@@ -203,4 +225,14 @@ class Memory extends React.Component {
 };
 
 
-export default Memory;
+export default function(props) {
+    const host = useSelector(state => state.host);
+    const user = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    return <Memory 
+            {...props} 
+            host={host}
+            user={user}
+            dispatch={dispatch}
+          />
+};
