@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="760" viewBox="0 0 360 760">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 48 48">
+      <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAB3klEQVRYw+1Vu04CQRQ9grES5dFogY9EaGjoSEg0JBaGWFLRacUXGBKN8htUNFBhY6HhC4TaBiVgA1sBUeKLxChj4WUZdmd3Z7fT7JmCndlzz2EuZwbAhQsX/xdxFNHEGExijNFEEXF58WWUpIS1o4RlGXkfGo7kGRga8FkbVBzLMzBUrOSTKrWFDEJSLQ0hg5ZalzQnl4nWxIqtUKzigSrL5kSFaAfqCgMTMtPooYe0Oj+kSsVMPkikFyxaGnTBwNBV50v4oOogT/PMFe3QZxtftk/OJx41KiYGHQnBHBQoyHErHWuDCEedpgKa5ylqCCOMmsAgItMiJ2jba9ECDWiejdMkbNE8htSKNW7NKEX6NG1Q9dCIGlBDCkcGHvX2DYhbZCdDojRNxEGdIUv+Vcf/IlekkBXvIOJoBzAPqscipAmMTK/nERJWQZ2hTkW70vJai31aq4sNBvR63Yb8vMUmrQxE8n56+WpTnreYBdWvN4jRqzudfMHwRy3oLO5pHtOTo+o53EKKk78wzQ1vkcI2nmgW1VO96As2f24ZzYKgqg+viJrXEc+k0q+3yIuJXlxypG+cSB+wU0y4yqr4+/9ey8eo4x3PuMaerTOcwg1GeMMtjgyudRcuXPxh/ADgOK4bvpY3HAAAAABJRU5ErkJggg=="/>
+    </pattern>
+    <pattern id="pattern-2" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 48 48">
+      <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAAAjUlEQVRYw+2WMQ7AIAhFuYfn52g6eYfaDi42RhBoavI/k1F4Bv4AEfRnJWIqdCmj3FlJVr6qi/eoEgRvl3+C14BsAuQ1oD/VSpwHwPJidp4FAPGA8CHDRXDRgS4C4HvA+S46D+C+eI0A99VxBLgvv+/eOa/vu0O1Tx8AH98LPsbRAIvvha3d83347CCrGv9iOhlnjsQJAAAAAElFTkSuQmCC"/>
+    </pattern>
+    <pattern id="pattern-3" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 48 48">
+      <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABNklEQVRYw+2UsWoCQRRFT2UVKxHEWG8iFvmFYGEvpFmbtIH8hI2F1Tb7FxLbpFnQb3D9Aa1FUAsLcdKMww6ou2Z2DOLc2z3uu5d9b+eBg4NDdjQImLJmzZSARr7mBUJ2iAR3hBTys4808wOjvCLCo/YCQZjP7A/DmeNToYLPXA0qh10Eyr6kaiUVEZgHxNLK16q+rMbmAStpVdWqVVld3UCA9RFZX7L139T6Q7vCqbB+7K5wrh3+G2Xa9BkyYYZAMGPCkD5tyqbWdbrqFh1nTJf638xbjM5aJzmidZl57cTbPceIWlb7JgutdcuYHm+88Ag84PHKOz3GbDXdgmYWe4+NatnzQ4fiSW2RDt/slX6Dlx4wUPIvnjN98VOiZ5AuX0rp50Vb+5Bdy3SpMKQLMA9wcLg//AKtHZUqCuWB2gAAAABJRU5ErkJggg=="/>
+    </pattern>
+    <pattern id="pattern-4" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 48 48">
+      <image width="48" height="48" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABGElEQVRYw+1UMRLBUBRcM1SURm3GARROoHCFFO6gcQmNQyicQeEEChcwepNWKilM7DeT7wWRn59QmLfb/P/eZjcpNoBC8Vs0sCQb37JvYY2EXPP0BXSwvdsbbnmrGT3srb3hnpMaMcAxY2945LQmjBBa2x2ZnkNuasAEkbXcoE1u7D3itiKmiK3dCs37rMlTOoupqIA5rtZqkdks7PxKlXepHiazl/1MhHuULy2V4QXBW03ATaopWT5ZqjPGuboxtx7lk6U6YfhRO6SiZPlkqQ7oF+r7VJUonyxVgq7TF3fFEwXlk6UydIV85kP5ZKn8A3LLJ0tVLcChfM8BSQ7z9M5vpAGlA1zvGqAB/xRQVCzfn6MGKBSKLG5UCfOQ7+6srgAAAABJRU5ErkJggg=="/>
+    </pattern>
+    <clipPath id="clip-Samsung_Galaxy_S10_5">
+      <rect width="360" height="760"/>
+    </clipPath>
+  </defs>
+  <g id="Samsung_Galaxy_S10_5" data-name="Samsung Galaxy S10 – 5" clip-path="url(#clip-Samsung_Galaxy_S10_5)">
+    <rect width="360" height="760" fill="#ebebeb"/>
+    <path id="Path_65" data-name="Path 65" d="M2409.677,928.056c227.343-82.529,386.95-495.171,386.95-495.171" transform="translate(-2424 -283)" fill="none" stroke="#d5c001" stroke-width="1"/>
+    <path id="Path_66" data-name="Path 66" d="M2413.569,423.543c300.528,98.878,403.3,223.45,403.3,223.45" transform="translate(-2424 -283)" fill="none" stroke="#d5c001" stroke-width="2"/>
+    <path id="Path_68" data-name="Path 68" d="M2674.017,819.07c-31.537,21.715,1.433,23.689,11.468,16.451s16.485-16.451,6.451-23.031S2674.017,819.07,2674.017,819.07Z" transform="translate(-2424 -283)" fill="none" stroke="#d5c001" stroke-width="3"/>
+    <path id="Path_60" data-name="Path 60" d="M2555.2,552.63l-31.508,86.77,75.62-52.353h-89.193l80.953,52.353Z" transform="translate(-2374.616 -278.596)" fill="#3268b8" stroke="#3268b8" stroke-width="1"/>
+    <path id="Path_61" data-name="Path 61" d="M2555.2,552.63l-31.508,86.77,75.62-52.353h-89.193l80.953,52.353Z" transform="translate(-2261.713 -223.015)" fill="#c5bd76" stroke="#c5bd76" stroke-width="1"/>
+    <path id="Path_62" data-name="Path 62" d="M2555.2,552.63l-31.508,86.77,75.62-52.353h-89.193l80.953,52.353Z" transform="translate(-2484.003 -216.015)" fill="#af9e00" stroke="#af9e00" stroke-width="1"/>
+    <path id="Path_63" data-name="Path 63" d="M2555.2,552.63l-31.508,86.77,75.62-52.353h-89.193l80.953,52.353Z" transform="translate(-2179.923 -135.826)" fill="#c5bd76" stroke="#c5bd76" stroke-width="1"/>
+    <path id="Path_64" data-name="Path 64" d="M2555.2,552.63l-31.508,86.77,75.62-52.353h-89.193l80.953,52.353Z" transform="translate(-2570.116 -135.826)" fill="#af9e00" stroke="#af9e00" stroke-width="1"/>
+    <g id="Group_6" data-name="Group 6">
+      <rect id="Rectangle_10" data-name="Rectangle 10" width="360" height="50" transform="translate(0 710)" fill="#d9d9d9"/>
+      <rect id="games" width="45" height="47" transform="translate(113 713)" fill="url(#pattern)"/>
+      <rect id="library" width="37" height="36" transform="translate(203 717)" fill="url(#pattern-2)"/>
+      <rect id="person" width="44" height="43" transform="translate(285 714)" fill="url(#pattern-3)"/>
+      <rect id="home" width="36" height="36" transform="translate(32 717)" fill="url(#pattern-4)"/>
+    </g>
+    <text id="Izaberite_level_I_pređite_u_sledeći_nivo" data-name="Izaberite level I pređite u 
+sledeći nivo" transform="translate(180 81)" font-size="20" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="-127.19" y="0">Izaberite level I pređite u </tspan><tspan x="-61.08" y="30">sledeći nivo</tspan></text>
+    <text id="_3" data-name="3" transform="translate(180 324)" fill="#af9e00" font-size="20" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="-6.05" y="0">3</tspan></text>
+    <text id="_2" data-name="2" transform="translate(71 390)" fill="#3268b8" font-size="20" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="-5.71" y="0">2</tspan></text>
+    <path id="Path_67" data-name="Path 67" d="M2640.91,849.42" transform="translate(-2424 -283)" fill="none" stroke="#707070" stroke-width="1"/>
+    <image id="outline_lock_black_24dp" width="34" height="34" transform="translate(276 356)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAQAAAD9CzEMAAABB0lEQVRYw+2WMRKCMBBF3zhjJyfgEJR6DQoOpZ1eAXMnBksHKytt7GJhwqgEwaxxnDHZjj/5D3azYeFf1pSCkpozZ2pKCqaftM/ZoZ9iR/4Z8wnLjrmNJRM5YNVrr9Gs5MmxVhfWLJgxY8GaS/s8l5XW5n5P9qBk7NtaCMpdtG+fdbSs/YrCH7A1FhunujHq1h9QGYu5U50btfIHnIxF4lQTo578Afak+OoR4AtIURxeXhCuOKBIx9kf3za3cRyDUN72Go0aBjQiQCMvrHhfBPw14NbhfR0rBtx3uKtjxQA10LFiQDPQsb8PCJ6i4EUOfkzjVREB4/cF/+kHH1uCD17BR8e4vr2urpZDhYVrZBQAAAAASUVORK5CYII="/>
+  </g>
+</svg>
