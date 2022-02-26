@@ -1,6 +1,6 @@
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack"
-import {Register, Login, Load} from "./screens";
+import {Register, Login, Load, Uputstvo} from "./screens";
 import Aplikacija from "./screens/aplikacija";
 import {Provider} from "react-redux";
 import store from "./redux/store";
@@ -31,6 +31,10 @@ export default function App() {
           <Stack.Screen
             name="app"
             component={Aplikacija}
+          />
+          <Stack.Screen
+            name="uputstvo"
+            component={Uputstvo}
           />
 
         </Stack.Navigator>

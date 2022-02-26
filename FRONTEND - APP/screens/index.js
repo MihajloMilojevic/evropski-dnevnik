@@ -5,5 +5,6 @@ import Load from './load';
 import Miths from './app/miths';
 import Leaderboard from "./app/leaderboard";
 import Games from "./app/games";
+import Uputstvo from './uputstvo';
 
-export {Register, Login, Home, Load, Miths, Leaderboard, Games}
+export {Register, Login, Home, Load, Miths, Leaderboard, Games, Uputstvo}

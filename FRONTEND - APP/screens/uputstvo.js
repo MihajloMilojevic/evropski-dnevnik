@@ -1,13 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import {View, Text, StyleSheet, Button, Alert, Pressable, ImageBackground, Image} from "react-native";
-import { removeUser } from "../../redux";
 import {useSelector, useDispatch} from "react-redux";
-import CustomButton from "../../components/customButton";
-import pozadina from "../../assets/pozadine/homepageBcg.png";
-import gornjaSlika from "../../assets/slike/logo1.png";
+import CustomButton from "../components/customButton";
+import pozadina from "../assets/pozadine/homepageBcg.png";
+import gornjaSlika from "../assets/slike/logo1.png";
 
-export default function Home({navigation})
+export default function Uputstvo({navigation})
 {
 	const user = useSelector(state => state.user);
 	const dispatch = useDispatch();
@@ -28,7 +27,7 @@ export default function Home({navigation})
 			<Text style={styles.tekst}>Koristi ikonice kako bi došao do: početne, kviza, uputstva i informacija o profilu</Text>
 			<CustomButton
 				title={"Uputstvo"}
-				onPress={() => navigation.navigate("")}
+				onPress={() => navigation.navigate("uputstvo")}
 			/>
 			{/*<CustomButton
 				title={"Izloguj se"}
