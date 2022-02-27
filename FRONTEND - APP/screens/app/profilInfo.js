@@ -30,24 +30,43 @@ export default function Profil({navigation})
 	}
 
 	return (
-		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container}>
+		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container} imageStyle= 
+		{{opacity:0.5}}>
 			<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
 			<Text style={styles.zdravo}>Profil igrača</Text>
-			<Text style={styles.tekst}>Ime: {user.username}</Text>
-			<Text style={styles.tekst}>Mejl: {user.email}</Text>
+			<View style={styles.info}>
+				<Text style={styles.naslov}>Ime:</Text>
+				<Text style={styles.tekst}>{user.username}</Text>
+			</View>
+			<View style={styles.hairline} />
+			<View style={styles.info}>
+				<Text style={styles.naslov}>Mejl:</Text>
+				<Text style={styles.tekst}>{user.email}</Text>
+			</View>
+			<View style={styles.hairline} />
 			{
 				user.level !== 13 ?
-				<Text style={styles.tekst}>Nivo: {user.level}</Text>
+				<View style={styles.info}>
+					<Text style={styles.naslov}>Nivo:</Text>
+					<Text style={styles.tekst}>{user.level}</Text>
+				</View>
 				:
 				<View style={{
 					display: "flex",
 					flexDirection: "row"
 				}}>
-					<Text  style={styles.tekst}>Nivo: </Text>
-					<FontAwesome name={"trophy"} size={30} color={"#3268B8"}/>
+					<View style={styles.info}>
+						<Text style={styles.naslov}>Nivo:</Text>
+						<FontAwesome name={"trophy"} size={30} color={"#3268B8"} style={styles.trofej}/>
+					</View>
+					
 				</View>
 			}
-			<Text style={styles.tekst}>Poeni: {user.points}</Text>
+			<View style={styles.hairline} />
+			<View style={styles.info}>
+				<Text style={styles.naslov}>Poeni:</Text>
+				<Text style={styles.tekst}>{user.points}</Text>
+			</View>
 			<CustomButton
 				title={"Izloguj se"}
 				onPress={logoutButton}
@@ -70,11 +89,34 @@ const styles = StyleSheet.create({
 		fontWeight: "bold",
         marginBottom: 40,
 	},
+	naslov: {
+		fontSize: 22,
+		color: "#000",
+		fontWeight: "bold",
+		textAlign: "center"
+	},
     tekst: {
         color: "#000",
         fontSize: 20,
+		fontStyle: "italic",
+		textAlign: "center",
     },
     dugme: {
         marginTop: 40,
-    }
+    },
+	trofej: {
+		textAlign: "center"
+	},
+	hairline: {
+        backgroundColor: '#3268B8',
+        height: 2,
+        width: "90%",
+		margin: 0
+    },
+	info: {
+		width: "90%",
+		margin: 0,
+		paddingTop: 10,
+		paddingBottom: 10
+	}
 })
