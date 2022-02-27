@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 import CircleList from "react-native-circle-list"
 import { useSelector } from "react-redux";
-import LevelSelectItem from "../../components/levelSelectItem"
+import LevelSelectItem from "../../components/levelSelectItem";
+import pozadina from "../../assets/pozadine/mithsBcg.png";
 
 export default function LevelSelect({navigation}) {
 
@@ -37,7 +38,7 @@ export default function LevelSelect({navigation}) {
 	}, []);
 
 	return (
-		<View style={styles.container}>
+		<ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>
               <CircleList
 			  	ref={circleRef}
                 data={data}
@@ -46,7 +47,7 @@ export default function LevelSelect({navigation}) {
                 visiblityPadding={1}
                 elementCount={data.length}
             />
-        </View>
+		</ImageBackground>
 	);
 }
 
