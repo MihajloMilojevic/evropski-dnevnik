@@ -10,9 +10,22 @@ export default function LevelSelect({navigation}) {
 	const circleRef = useRef(null)
 	const user = useSelector(state => state.user);
 	const [mounted, setMounted] = useState(false)
+	const [loading, setLoading] = useState(false)
+	const [modal, setModal] = useState({
+		show: false,
+		title: "",
+		message: "",
+		onPress: () => {}
+	})
 
 	const keyExtractor = () => (Math.random() * 1000).toString(36);
-    const renderItem = ({ item }) => <LevelSelectItem navigation={navigation} item={item} level={item.value}/>
+    const renderItem = ({ item }) => <LevelSelectItem 
+										navigation={navigation} 
+										item={item} 
+										level={item.value}
+										setModal={setModal}
+										setLoading={setLoading}
+									/>
 	const data = [
 		{ value: 1},
 		{ value: 2},
@@ -39,7 +52,9 @@ export default function LevelSelect({navigation}) {
 
 	return (
 		<ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>
-              <CircleList
+			<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
+			<LoadingModal showModal={loading}/>
+            <CircleList
 			  	ref={circleRef}
                 data={data}
                 keyExtractor={keyExtractor}

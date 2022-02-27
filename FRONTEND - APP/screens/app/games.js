@@ -5,7 +5,6 @@ import Memory from "./memory";
 import {View, Text, StyleSheet, ImageBackground} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LevelSelect from "./levelSelect";
-//import pozadina from "../../assets/pozadine/mithsBcg.png";
 
 const Stack = createStackNavigator();
 

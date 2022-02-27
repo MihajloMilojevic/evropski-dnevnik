@@ -24,7 +24,5 @@ Mihajlo:
    - uputstvo - scroll
    - promena cofig fajlova za iconice (od Milunovića)
    - google play store
-   - pomoć Šukiju
-   - #mit u bazi
 Profesorka:
    - literatura

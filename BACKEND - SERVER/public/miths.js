@@ -1,8 +1,8 @@
 import host from "./HOSTURL.js";
 
 const ID = id => {return document.getElementById(id)};
-const URL = host + "/api/games/mith"
-// const URL = "http://localhost:3000/api/games/mith"
+// const URL = host + "/api/games/mith"
+const URL = "http://localhost:3000/api/games/mith"
 
 const title = ID("title");
 const correct = ID("correct");
@@ -21,7 +21,7 @@ const createMith = async () => {
 			},
 			body: JSON.stringify({
 				title: title.value,
-				correct: Boolean(correct.value),
+				correct: Boolean(correct.checked),
 				description: desc.value,
 				level: level.value
 			})

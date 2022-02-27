@@ -3,7 +3,7 @@ import {passed, current, locked} from "../assets/zvezde";
 import {useSelector} from "react-redux";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
-export default function LevelSelectItem({item, navigation, level}) {
+export default function LevelSelectItem({item, navigation, level, setLoading, setModal}) {
 
 	const user = useSelector(state => state.user);
 	const host = useSelector(state => state.host);
@@ -34,15 +34,27 @@ export default function LevelSelectItem({item, navigation, level}) {
 		style={styles.element}
 		onPress={async () => {
 			if(level > user.level) {
-				Alert.alert("Zaključano", "Prvo pređite sve prethodne nivoe");
+				setModal({
+					title: "Zaključano",
+					message: "Prvo pređite sve prethodne nivoe",
+					show: true,
+					onPress: () => {}
+				})
 				return;
 			}
 			try {
+				setLoading(true)
 				const res = await fetch(URL + level);
 				const json = await res.json();
+				setLoading(false)
 				if(!json.ok)
 				{
-					Alert.alert("Greška", "RESPONSE ERROR");
+					setModal({
+						title: "Greška",
+						message: json.message,
+						show: true,
+						onPress: () => {}
+					})
 					return;
 				}
 				switch (json.type) {
@@ -62,7 +74,13 @@ export default function LevelSelectItem({item, navigation, level}) {
 						break;
 				}
 			} catch (error) {
-				Alert.alert("Greška", "Došlo je do greške, probajte ponovo kasnije");
+				setLoading(false)
+				setModal({
+					title: "Greška",
+					message: "Došlo je do greške, probajte ponovo kasnije",
+					show: true,
+					onPress: () => {}
+				})
 			}
 		}}
 	  >

@@ -50,12 +50,12 @@ class Memory extends React.Component {
         backgroundColor: '#FE474C',
         borderRadius: 5,
         //borderWidth: 1,
-        shadowColor: 'rgb(0,0,0)',
+        shadowColor: 'rgba(0,0,0,0.5)',
         shadowOffset: {
           width: 1,
           height: 1,
         },
-        shadowOpacity: 1,
+        shadowOpacity: 0.5,
         elevation: 10
       },
       card1: {
