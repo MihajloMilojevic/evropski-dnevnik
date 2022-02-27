@@ -35,7 +35,7 @@ export default function Uputstvo({navigation})
 			/>
 			<CollapseUputstvo
 				title={"Mitovi"}
-				tekst={"Dobili ste karticu u kojoj stoji mit. Igra se bazira na Tačno - Netačno sistemu. Kada karticu povučete desno, odgovorili ste Tačno, u suprotnom odgovorili ste netačno. Poenta je da odgovorite da li je mit koji je na kartici tačan ili je netačan."}
+				tekst={"Dobili ste karticu u kojoj stoji mit. Igra se bazira na Tačno - Netačno sistemu. Kada karticu povučete desno, odgovorili ste Tačno, u suprotnom odgovorili ste netačno. Cilj je da odgovorite da li je mit koji je na kartici tačan ili je netačan."}
 			/>
 			<CollapseUputstvo
 				title={"Kviz"}
