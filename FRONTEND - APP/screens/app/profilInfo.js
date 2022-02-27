@@ -21,8 +21,12 @@ export default function Profil({navigation})
 
 	const logoutButton = async () => {
 		dispatch(removeUser())
-		Alert.alert("Uspeh", "Uspešno odjavljen")
-		navigation.replace("login")
+		setModal({
+			title: "Uspeh",
+			message: "Uspešno odjavljen.",
+			show: true,
+			onPress: () => navigation.replace("login")
+		})		
 	}
 
 	return (
@@ -40,7 +44,7 @@ export default function Profil({navigation})
 					flexDirection: "row"
 				}}>
 					<Text  style={styles.tekst}>Nivo: </Text>
-					<FontAwesome name={"star"} size={30} color={"#3268B8"}/>
+					<FontAwesome name={"trophy"} size={30} color={"#3268B8"}/>
 				</View>
 			}
 			<Text style={styles.tekst}>Poeni: {user.points}</Text>
