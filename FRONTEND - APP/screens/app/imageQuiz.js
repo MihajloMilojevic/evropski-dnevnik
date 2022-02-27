@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
 		//display: "flex",
 		flex: 1,
 		justifyContent: "center",
-		alignItems: "center"
+		alignItems: "center",
+		width: "90%"
 	},
 	pitanjeText: {
 		fontSize: 24,
@@ -137,6 +138,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 		alignItems: "center",
+		width: "90%"
 	},
 	odgovoriText: {
 		textAlign: "center",

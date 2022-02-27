@@ -25,7 +25,8 @@ export default function Oaplikaciji({navigation})
 			<Text style={styles.tekst}>
 			Aplikacija je napravljena povodom konkursa <Text style={styles.boldirano}>"Evropa i ja"</Text>, u realizaciji aplikacije su učestvovali učenici trećeg razreda Elektro-saobraćajne
 tehničke škole u Kraljevu, smera <Text style={styles.boldirano}>Elektrotehničar inforamacionih tehnologija</Text>.
-Tim se sastoji od tri učenika: <Text style={styles.boldirano}>Mihajlo Milojević, Vojin Šundović i Ana Luković</Text>.
+Tim se sastoji od tri učenika: <Text style={styles.boldirano}>Mihajlo Milojević, Vojin Šundović i Ana Luković</Text> 
+Linkovi koje smo koristili.
 			</Text>
             <CustomButton
                 title={"Nazad"}
