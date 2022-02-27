@@ -93,12 +93,16 @@ export default function Login({navigation}) {
 				style={styles.input}
 				keyboardType="email-address"
 				onChangeText={emailChange}
+				activeUnderlineColor={"#3268B8"}
+				underlineColor={"#AF9E00"}
 			/>
 			<TextInput
 				placeholder={"šifra"}
 				style={styles.input}
 				secureTextEntry={passwordHidden}
 				onChangeText={passwordChange}
+				activeUnderlineColor={"#3268B8"}
+				underlineColor={"#AF9E00"}
 				right={
 					<TextInput.Icon 
 						name={() => 
