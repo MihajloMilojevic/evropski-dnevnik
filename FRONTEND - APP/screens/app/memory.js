@@ -11,14 +11,14 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import CardFlip from 'react-native-card-flip';
 import { useDispatch, useSelector } from 'react-redux';
 import {setUser} from "../../redux";
-/*import pozadina from "../../assets/pozadine/kvizBcg.png";*/
+import pozadina from "../../assets/pozadine/kvizBcg.png";
+import Logo from "../../assets/slike/logo1.png";
 
 class Memory extends React.Component {
 
   constructor(props) {
     super(props);
     // console.log(this.props)
-    this.EU = this.props.host + "/images/EU.png"
     this.table = this.copyTable(this.props.route.params.memory.table)
     this.urls = [...this.props.route.params.memory.urls];
     this.state = {
@@ -35,7 +35,6 @@ class Memory extends React.Component {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
         marginTop: StatusBar.currentHeight
       },
       cardContainer: {
@@ -50,15 +49,17 @@ class Memory extends React.Component {
         alignItems: "center",
         backgroundColor: '#FE474C',
         borderRadius: 5,
-        shadowColor: 'rgba(0,0,0,0.5)',
+        //borderWidth: 1,
+        shadowColor: 'rgb(0,0,0)',
         shadowOffset: {
-          width: 0,
+          width: 1,
           height: 1,
         },
-        shadowOpacity: 0.5,
+        shadowOpacity: 1,
+        elevation: 10
       },
       card1: {
-        backgroundColor: '#FE474C',
+        backgroundColor: '#fff',
       },
       card2: {
         backgroundColor: '#FEB12C',
@@ -71,6 +72,7 @@ class Memory extends React.Component {
         backgroundColor: 'lime',
       },
       image: {
+        borderRadius: 5,
         width: "100%",
         height: "100%",
         resizeMode: "contain"
@@ -198,7 +200,7 @@ class Memory extends React.Component {
                           style={[this.styles.card, this.styles.card1]}
                           onPress={onClick(rowIndex, colIndex)}>
                           <ImageBackground
-                            source={{uri: this.EU}}
+                            source={Logo}
                             style={this.styles.image}
                             resizeMode={"cover"}
                           />
@@ -210,6 +212,9 @@ class Memory extends React.Component {
                           <ImageBackground
                             source={{uri: this.props.host + this.urls[col]}}
                             style={this.styles.image}
+                            imageStyle={{  
+                              borderRadius: 5,
+                            }}
                             resizeMode={"cover"}
                           />
                         </TouchableOpacity>
@@ -230,10 +235,23 @@ export default function(props) {
     const host = useSelector(state => state.host);
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
-    return <Memory 
-            {...props} 
-            host={host}
-            user={user}
-            dispatch={dispatch}
-          />
+    return (
+      <ImageBackground 
+        style={{
+          flex: 1,
+          backgroundColor: '#fff',
+          color: "white",
+          alignItems: 'center',
+          justifyContent: 'center',
+        }} 
+        source={pozadina} 
+        resizeMode={"cover"}
+      >
+        <Memory 
+          {...props} 
+          host={host}
+          user={user}
+          dispatch={dispatch}
+        />
+      </ImageBackground>)
 };

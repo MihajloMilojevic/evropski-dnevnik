@@ -18,13 +18,14 @@ export default function Oaplikaciji({navigation})
 	}*/}
 
 	return (
-		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container}>
+		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container} imageStyle= 
+		{{opacity:0.5}}>
 			<Text style={styles.naslov}>O aplikaicji</Text>
+			<View style={styles.hairline} />
 			<Text style={styles.tekst}>
-			Aplikacija je napravljena povodom konkursa "Evropa i ja", u realizaciji aplikacije su učestvovali učenici trećeg razreda Elektro-saobraćajne
-tehničke škole u Kraljevu, smera Elektrotehničar inforamacionih tehnologija.
-Tim se sastoji od tri učenika: Mihajlo Milojević, Vojin Šundović i Ana Luković.
-Za ovu aplikaciju smo koristili materijal sa:(linkovi od tog materijala)
+			Aplikacija je napravljena povodom konkursa <Text style={styles.boldirano}>"Evropa i ja"</Text>, u realizaciji aplikacije su učestvovali učenici trećeg razreda Elektro-saobraćajne
+tehničke škole u Kraljevu, smera <Text style={styles.boldirano}>Elektrotehničar inforamacionih tehnologija</Text>.
+Tim se sastoji od tri učenika: <Text style={styles.boldirano}>Mihajlo Milojević, Vojin Šundović i Ana Luković</Text>.
 			</Text>
             <CustomButton
                 title={"Nazad"}
@@ -46,15 +47,27 @@ const styles = StyleSheet.create({
 		alignSelf: "center",
 	},
 	naslov: {
-		fontSize: 24,
+		fontSize: 26,
 		fontWeight: "bold",
-		alignSelf: "center"
+		alignSelf: "center",
+		marginBottom: 20,
 	},
 	tekst: {
 		textAlign: "center",
-		paddingLeft: 40,
-		paddingRight: 40,
+		paddingLeft: 20,
+		paddingRight: 20,
 		marginBottom: 20,
-		fontSize: 14
+		fontSize: 18,
+		lineHeight: 35,
+		marginTop: 20
 	},
+	boldirano: {
+		fontWeight: "bold",
+	},
+	hairline: {
+        backgroundColor: '#3268B8',
+        height: 2,
+        width: "90%",
+		margin: 0
+    },
 })

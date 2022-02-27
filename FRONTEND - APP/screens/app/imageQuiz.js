@@ -63,14 +63,20 @@ function ImageQuiz({navigation, route}) {
 							text={item} 
 							textStyle={styles.odgovoriText}
 							style={{
-								borderWidth: 1,
-								borderRadius: 20,
+								borderRadius: 5,
 								margin: 5,
 								paddingLeft: 50,
 								paddingRight: 50,
 								paddingTop: 5,
 								paddingBottom: 5,
-								width: 300
+								width: 300,
+								shadowColor: 'rgba(0,0,0,0.5)',
+								shadowOffset: {
+									width: 1,
+									height: 1,
+								},
+								shadowOpacity: 0.5,
+								elevation: 2,
 							}}
 							onPress={answer(index)}
 						/>))
@@ -113,7 +119,8 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	odgovoriText: {
-		textAlign: "center"
+		textAlign: "center",
+		padding: 20,
 	}
 })
 
