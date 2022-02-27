@@ -95,17 +95,17 @@ export default function Miths({navigation, route})
 			}),*/
 			backgroundColor: translate.interpolate({
 				inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
-				outputRange: ["red", "white", "green"],
+				outputRange: ["#ff5b4f", "white", "#41f26e"],
 				extrapolate: "clamp"
 			}),
 			borderRadius: 20,
 			transform: [
 				{translateX: translate},
-				// {rotate: translate.interpolate({
-				// 	inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
-				// 	outputRange: ["-15deg", "0deg", "15deg"],
-				// 	extrapolate: "clamp"
-				// })}
+				{rotate: translate.interpolate({
+					inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
+					outputRange: ["-15deg", "0deg", "15deg"],
+					extrapolate: "clamp"
+				})}
 			]
 		}
 	})
