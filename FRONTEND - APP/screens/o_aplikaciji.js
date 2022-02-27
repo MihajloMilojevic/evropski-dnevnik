@@ -20,6 +20,12 @@ export default function Oaplikaciji({navigation})
 	return (
 		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container}>
 			<Text style={styles.naslov}>O aplikaicji</Text>
+			<Text style={styles.tekst}>
+			Aplikacija je napravljena povodom konkursa "Evropa i ja", u realizaciji aplikacije su učestvovali učenici trećeg razreda Elektro-saobraćajne
+tehničke škole u Kraljevu, smera Elektrotehničar inforamacionih tehnologija.
+Tim se sastoji od tri učenika: Mihajlo Milojević, Vojin Šundović i Ana Luković.
+Za ovu aplikaciju smo koristili materijal sa:(linkovi od tog materijala)
+			</Text>
             <CustomButton
                 title={"Nazad"}
                 onPress={() => navigation.goBack()}
@@ -49,5 +55,6 @@ const styles = StyleSheet.create({
 		paddingLeft: 40,
 		paddingRight: 40,
 		marginBottom: 20,
+		fontSize: 14
 	},
 })
