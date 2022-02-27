@@ -11,6 +11,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import CardFlip from 'react-native-card-flip';
 import { useDispatch, useSelector } from 'react-redux';
 import {setUser} from "../../redux";
+/*import pozadina from "../../assets/pozadine/kvizBcg.png";*/
 
 class Memory extends React.Component {
 
@@ -178,7 +179,7 @@ class Memory extends React.Component {
     }
 
     return (
-        <Grid style={this.styles.container}>
+          <Grid style={this.styles.container}>
           {
             this.table.map((row, rowIndex) => (
               <Row key={"row-" + rowIndex}>
@@ -219,7 +220,7 @@ class Memory extends React.Component {
               </Row>
             ))
           }
-        </Grid>
+          </Grid>
     );
   }
 };

@@ -49,32 +49,39 @@ function Quiz({navigation, route}) {
 		}
 	}
 	return (
-		<ScrollView contentContainerStyle={styles.container}>
-			<View style={styles.pitanjeContainer}>
-				<Text style={styles.pitanjeText}>{quiz.question}</Text>
-			</View>
-			<View style={styles.odgovoriContainer}>
-				{
-					quiz.answers.map((item, index) => (
-						<Answer
-							key={index}
-							text={item} 
-							textStyle={styles.odgovoriText}
-							style={{
-								borderWidth: 1,
-								borderRadius: 20,
-								margin: 5,
-								paddingLeft: 50,
-								paddingRight: 50,
-								paddingTop: 5,
-								paddingBottom: 5,
-								width: 300
-							}}
-							onPress={answer(index)}
-						/>))
-				}
-			</View>
-		</ScrollView>
+		<ImageBackground
+			source={pozadina}
+			resizeMode={"cover"}
+			style={styles.container}
+		>
+			<ScrollView contentContainerStyle={styles.container}>
+				<View style={styles.pitanjeContainer}>
+					<Text style={styles.pitanjeText}>{quiz.question}</Text>
+				</View>
+				<View style={styles.odgovoriContainer}>
+					{
+						quiz.answers.map((item, index) => (
+							<Answer
+								key={index}
+								text={item} 
+								textStyle={styles.odgovoriText}
+								style={{
+									borderWidth: 1,
+									borderRadius: 20,
+									margin: 5,
+									paddingLeft: 50,
+									paddingRight: 50,
+									paddingTop: 5,
+									paddingBottom: 5,
+									width: 300
+								}}
+								onPress={answer(index)}
+							/>))
+					}
+				</View>
+			</ScrollView>
+		</ImageBackground>
+		
 	)
 }
 
