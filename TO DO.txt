@@ -19,7 +19,6 @@ Milunović:
    - slika za mit (swipe)
    - pomoć Šukiju oko dizajna po potrebi
 Mihajlo:
-   - boja forme
    - poruke o predjenom nivou
    - poruke o promašenom odgovoru
    - memorija (promena slike)

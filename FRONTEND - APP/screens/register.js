@@ -94,18 +94,24 @@ export default function Register({navigation}) {
 				style={styles.input}
 				onChangeText={usernameChange}
 				placeholder={"korisničko ime"}
+				activeUnderlineColor={"#3268B8"}
+				underlineColor={"#AF9E00"}
 			/>
 			<TextInput
 				style={styles.input}
 				keyboardType="email-address"
 				onChangeText={emailChange}
 				placeholder={"mejl"}
+				activeUnderlineColor={"#3268B8"}
+				underlineColor={"#AF9E00"}
 			/>
 			<TextInput
 				placeholder={"šifra"}
 				style={styles.input}
 				secureTextEntry={passwordHidden}
 				onChangeText={passwordChange}
+				activeUnderlineColor={"#3268B8"}
+				underlineColor={"#AF9E00"}
 				right={
 					<TextInput.Icon 
 						name={() => 
