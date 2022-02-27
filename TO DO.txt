@@ -1,0 +1,32 @@
+Ana:
+   - slika trofeja
+   - text na početnoj
+   - text za prezentaciju
+   - text za o aplikaciji
+   - slike po potrebi
+   - pomoć Šukiju oko dizajna po potrebi
+Šuki:
+   - implementacija dizajna kviza
+   - implementacija dizajna kviza sa slikom (zastave)
+   - o aplikaciji - redesign (fontSize, background, lineHeight?...)
+   - uputstvo - redesign (fontSize, background, lineHeight?...)
+   - profil - redesign (background, layout...)
+   - leaderboard - redesign (background, font?, colors?, shapes?...)
+Milunović: 
+   - icon
+   - adaptive icon
+   - splash screen
+   - slika za mit (swipe)
+   - pomoć Šukiju oko dizajna po potrebi
+Mihajlo:
+   - boja forme
+   - poruke o predjenom nivou
+   - poruke o promašenom odgovoru
+   - memorija (promena slike)
+   - promena slike u igri memorije
+   - uputstvo - scroll
+   - promena cofig fajlova za iconice (od Milunovića)
+   - google play store
+   - pomoć Šukiju
+Profesorka:
+   - literatura
