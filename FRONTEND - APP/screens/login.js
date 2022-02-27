@@ -9,12 +9,14 @@ import CustomButton from "../components/customButton";
 import backSlika from "../assets/pozadine/loginBcg.png";
 import gornjaSlika from "../assets/slike/unlock.png";
 import MessageModal from "../components/messageModal";
+import LoadingModal from "../components/loadingModal";
 
 
 export default function Login({navigation}) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
+	const [loading, setLoading] = useState(false)
 	const [modal, setModal] = useState({
 		show: false,
 		title: "",
@@ -37,6 +39,7 @@ export default function Login({navigation}) {
 	}
 	const loginButton = async () => {
 		try {
+			setLoading(true)
 			const odg = await fetch(URL, {
 				method: "POST",
 				headers: {
@@ -45,6 +48,7 @@ export default function Login({navigation}) {
 				body: JSON.stringify({ email, password}),
 			})
 			const data = await odg.json();
+			setLoading(false);
 			if(data.ok)
 			{
 				dispatch(setUser({...data.user, token: data.token}))
@@ -67,6 +71,7 @@ export default function Login({navigation}) {
 				})
 		} catch (error) {
 			console.error(error);
+			setLoading(false)
 		}
 	}
 	const goToRegister = () => {
@@ -75,6 +80,7 @@ export default function Login({navigation}) {
 	return (
 		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
 			<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
+			<LoadingModal showModal={loading}/>
 			<Image
 				style={styles.slika}
 				source={gornjaSlika}

@@ -3,28 +3,49 @@ import { View, Text, StyleSheet, Alert, FlatList, StatusBar, ImageBackground } f
 import {useSelector} from "react-redux";
 import LeaderbeardItem from "../../components/leaderBoardItem";
 import pozadina from "../../assets/pozadine/mithsBcg.png";
+import LoadingModal from "../../components/loadingModal";
+import MessageModal from "../../components/messageModal";
 
 
 export default function Leaderboard({ navigation }) {
     
     const [data, setData] = useState([])
-    
+	const [loading, setLoading] = useState(false)
+    const [modal, setModal] = useState({
+		show: false,
+		title: "",
+		message: "",
+		onPress: () => {}
+	})
+
 	const host = useSelector(state => state.host)
     const URL = host + "/api/users/leaderboard";
 
     const fetchData = async () => {
         try {
+            setLoading(true)
             const res = await fetch(URL);
             const json = await res.json();
+            setLoading(false)
             if(!json.ok)
             {
-                Alert.alert("Greška", json.message);
-                return navigation.navigate("home");
+                setModal({
+					title: "Greška",
+					message: json.message,
+					show: true,
+					onPress: () => navigation.navigate("home")
+				})
+                return ;
             }
             setData(json.users);
         } catch (error) {
-            Alert.alert("Greška", "Došlo je do greške, probajte ponovo kasnije.");
-            navigation.navigate("home");
+            setLoading(false)
+            setModal({
+                title: "Greška",
+                message: "Došlo je do greške, probajte ponovo kasnije.",
+                show: true,
+                onPress: () => navigation.navigate("home")
+            })
         }
     }
 
@@ -35,6 +56,8 @@ export default function Leaderboard({ navigation }) {
 
     return (
         <ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>
+            <MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
+            <LoadingModal showModal={loading}/>
             <Text style={styles.text}>TOP LISTA</Text>
             <FlatList
                 style={{

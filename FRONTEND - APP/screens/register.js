@@ -9,12 +9,14 @@ import {setUser} from "../redux";
 import backSlika from "../assets/pozadine/registerBcg.png";
 import gornjaSlika from "../assets/slike/register.png";
 import MessageModal from "../components/messageModal";
+import LoadingModal from "../components/loadingModal";
 
 export default function Register({navigation}) {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
+	const [loading, setLoading] = useState(false)
 	const [modal, setModal] = useState({
 		show: false,
 		title: "",
@@ -40,6 +42,7 @@ export default function Register({navigation}) {
 	}
 	const registerButton = async () => {
 		try {
+			setLoading(true)
 			const odg = await fetch(URL, {
 				method: "POST",
 				headers: {
@@ -47,7 +50,8 @@ export default function Register({navigation}) {
 				},
 				body: JSON.stringify({username, email, password}),
 			})
-			data = await odg.json();
+			const data = await odg.json();
+			setLoading(false)
 			if(data.ok)
 			{
 				setModal({
@@ -71,6 +75,7 @@ export default function Register({navigation}) {
 			}
 		} catch (error) {
 			console.error(error);
+			setLoading(false)
 		}
 	}
 	const goToLogin = () => {
@@ -79,6 +84,7 @@ export default function Register({navigation}) {
 	return (
 		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
 			<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
+			<LoadingModal showModal={loading}/>
 			<Image
 				style={styles.slika}
 				source={gornjaSlika}
