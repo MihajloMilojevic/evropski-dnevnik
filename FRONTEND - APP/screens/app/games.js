@@ -10,11 +10,7 @@ import LevelSelect from "./levelSelect";
 const Stack = createStackNavigator();
 
 export default function Games({navigation}) {
-    // return (<View style={styles.container}>
-    //     <Text>Games</Text>
-    // </View>)
     return (
-        //<ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>
             <Stack.Navigator
             screenOptions={{
                 headerShown: false
@@ -44,7 +40,6 @@ export default function Games({navigation}) {
                 component={Memory}
             />
         </Stack.Navigator>
-        //</ImageBackground>
     )
 }
 const styles = StyleSheet.create({

@@ -21,8 +21,6 @@ Milunović:
 Mihajlo:
    - poruke o predjenom nivou
    - poruke o promašenom odgovoru
-   - memorija (promena slike)
-   - promena slike u igri memorije
    - uputstvo - scroll
    - promena cofig fajlova za iconice (od Milunovića)
    - google play store
