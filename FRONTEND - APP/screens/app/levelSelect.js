@@ -4,6 +4,8 @@ import CircleList from "react-native-circle-list"
 import { useSelector } from "react-redux";
 import LevelSelectItem from "../../components/levelSelectItem";
 import pozadina from "../../assets/pozadine/mithsBcg.png";
+import MessageModal from "../../components/messageModal";
+import LoadingModal from "../../components/loadingModal";
 
 export default function LevelSelect({navigation}) {
 

@@ -10,6 +10,7 @@ import backSlika from "../assets/pozadine/loginBcg.png";
 import gornjaSlika from "../assets/slike/unlock.png";
 import MessageModal from "../components/messageModal";
 import LoadingModal from "../components/loadingModal";
+import VictoryModal from "../components/victoryModal";
 
 
 export default function Login({navigation}) {
@@ -79,7 +80,8 @@ export default function Login({navigation}) {
 	}
 	return (
 		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
-			<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
+			{/* {<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>} */}
+			<VictoryModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
 			<LoadingModal showModal={loading}/>
 			<Image
 				style={styles.slika}
