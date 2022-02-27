@@ -8,14 +8,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {setUser} from "../redux";
 import backSlika from "../assets/pozadine/registerBcg.png";
 import gornjaSlika from "../assets/slike/register.png";
-
+import MessageModal from "../components/messageModal";
 
 export default function Register({navigation}) {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
-	
+	const [modal, setModal] = useState({
+		show: false,
+		title: "",
+		message: "",
+		onPress: () => {}
+	})
+
 	const dispatch = useDispatch();
 	const host = useSelector(state => state.host)
 
@@ -44,13 +50,24 @@ export default function Register({navigation}) {
 			data = await odg.json();
 			if(data.ok)
 			{
-				Alert.alert("Uspeh", "Uspešno ste se registrovali");
-				dispatch(setUser({...data.user, token: data.token}))
-				navigation.replace("app");
+				setModal({
+					title: "Uspeh",
+					message: "Uspešno ste se registrovali",
+					show: true,
+					onPress: () => navigation.replace("app")
+				})
 			}
 			else
 			{
-				Alert.alert("Greska", data.message);
+				setModal({
+					title: "Greška",
+					message: data.message,
+					show: true,
+					onPress: () => setModal({
+						...modal,
+						show: false
+					})
+				})
 			}
 		} catch (error) {
 			console.error(error);
@@ -61,6 +78,7 @@ export default function Register({navigation}) {
 	}
 	return (
 		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
+			<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
 			<Image
 				style={styles.slika}
 				source={gornjaSlika}

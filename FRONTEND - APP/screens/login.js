@@ -44,7 +44,7 @@ export default function Login({navigation}) {
 				},
 				body: JSON.stringify({ email, password}),
 			})
-			data = await odg.json();
+			const data = await odg.json();
 			if(data.ok)
 			{
 				dispatch(setUser({...data.user, token: data.token}))
@@ -73,9 +73,8 @@ export default function Login({navigation}) {
 		navigation.replace("register")
 	}
 	return (
-		<>
-		<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
 		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
+			<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
 			<Image
 				style={styles.slika}
 				source={gornjaSlika}
@@ -117,7 +116,6 @@ export default function Login({navigation}) {
 			><Text style={styles.register}>Registrujte se </Text></Pressable>
 			
 		</ImageBackground>
-		</>
 	);
 }
 const styles = StyleSheet.create({

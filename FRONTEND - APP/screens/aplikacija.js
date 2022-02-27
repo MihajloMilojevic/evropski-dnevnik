@@ -38,7 +38,8 @@ function Aplikacija({}) {
 				},
 				tabBarActiveTintColor: '#6da0ed',
 				tabBarInactiveTintColor: 'gray',
-				headerShown: false
+				headerShown: false,
+				tabBarShowLabel: false,
 			})}
 		>
 			<Tab.Screen 
