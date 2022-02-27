@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Alert, FlatList, StatusBar } from "react-native";
+import { View, Text, StyleSheet, Alert, FlatList, StatusBar, ImageBackground } from "react-native";
 import {useSelector} from "react-redux";
 import LeaderbeardItem from "../../components/leaderBoardItem";
+import pozadina from "../../assets/pozadine/mithsBcg.png";
 
 
 export default function Leaderboard({ navigation }) {
@@ -33,8 +34,8 @@ export default function Leaderboard({ navigation }) {
     }, [])
 
     return (
-        <View style={styles.container}>
-            <Text style={styles.text}>TOP PLAYERS</Text>
+        <ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>
+            <Text style={styles.text}>TOP LISTA</Text>
             <FlatList
                 style={{
                     width: "100%",
@@ -44,7 +45,7 @@ export default function Leaderboard({ navigation }) {
                 renderItem={renderItem}
                 keyExtractor={item => item._id}
             />
-        </View>
+        </ImageBackground>
     )
 }
 

@@ -25,7 +25,7 @@ export default function Home({navigation})
 				source={gornjaSlika}
 			></Image>
 			<Text style={styles.zdravo}>Zdravo, {user.username}</Text>
-			<Text style={styles.tekst}>Koristi ikonice kako bi došao do: početne, kviza, uputstva i informacija o profilu</Text>
+			<Text style={styles.tekst}>Koristi ikonice kako bi došao do: početne, kviza, liste igrača i informacija o profilu</Text>
 			<CustomButton
 				title={"Uputstvo"}
 				onPress={() => navigation.navigate("uputstvo")}

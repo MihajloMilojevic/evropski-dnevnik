@@ -1,8 +1,9 @@
 import React, {useRef, useState, useEffect} from "react";
-import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert, Text } from "react-native";
+import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert, Text, ImageBackground } from "react-native";
 import MithCard from "../../components/mithCard";
 import { useDispatch, useSelector } from 'react-redux';
 import {setUser} from "../../redux";
+import pozadina from "../../assets/pozadine/mithsBcg.png";
 
 export default function Miths({navigation, route})
 {
@@ -113,12 +114,12 @@ export default function Miths({navigation, route})
 		return (<View><Text>Error</Text></View>)
 	else
 		return (
-		<View style={styles.container}>
+		<ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>
 			<Animated.View 
 				{...panResponder.panHandlers}
 				style={styles.card}
 			>
 				<MithCard title={mith.title}/>
 			</Animated.View>
-		</View>);
+		</ImageBackground>);
 }

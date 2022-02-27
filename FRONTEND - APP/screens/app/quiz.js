@@ -1,7 +1,8 @@
-import { Alert, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Alert, ScrollView, StyleSheet, Text, View, ImageBackground } from "react-native";
 import Answer from "../../components/odgovor";
 import { useDispatch, useSelector } from 'react-redux';
 import {setUser} from "../../redux";
+import pozadina from "../../assets/pozadine/kvizBcg.png";
 
 function Quiz({navigation, route}) {
 	const quiz = route.params.quiz;
