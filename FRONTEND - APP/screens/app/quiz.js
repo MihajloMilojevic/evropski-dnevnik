@@ -1,8 +1,9 @@
-import { Alert, ScrollView, StyleSheet, Text, View, ImageBackground } from "react-native";
+import { Alert, ScrollView, StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 import Answer from "../../components/odgovor";
 import { useDispatch, useSelector } from 'react-redux';
 import {setUser} from "../../redux";
 import pozadina from "../../assets/pozadine/kvizBcg.png";
+import slika from "../../assets/slike/pitanje.png";
 
 function Quiz({navigation, route}) {
 	const quiz = route.params.quiz;
@@ -54,6 +55,10 @@ function Quiz({navigation, route}) {
 			resizeMode={"cover"}
 			style={styles.container}
 		>
+			<Image
+				source={slika}
+				style={styles.slika}
+			/>
 			<ScrollView contentContainerStyle={styles.container}>
 				<View style={styles.pitanjeContainer}>
 					<Text style={styles.pitanjeText}>{quiz.question}</Text>
@@ -68,10 +73,10 @@ function Quiz({navigation, route}) {
 								style={{
 									borderRadius: 5,
 									margin: 5,
-									paddingLeft: 50,
-									paddingRight: 50,
-									paddingTop: 5,
-									paddingBottom: 5,
+									paddingLeft: 2,
+									paddingRight: 2,
+									paddingTop: 2,
+									paddingBottom: 2,
 									width: 300,
 									shadowColor: 'rgba(0,0,0,0.5)',
 									shadowOffset: {
@@ -100,13 +105,24 @@ const styles = StyleSheet.create({
 	},
 	pitanjeContainer: {
 		//display: "flex",
-		flex: 2,
+		//flex: 2,
 		justifyContent: "center",
-		alignItems: "center"
+		alignItems: "center",
+		
 	},
 	pitanjeText: {
 		fontSize: 30,
-		textAlign: "center"
+		textAlign: "center",
+		backgroundColor: "#FBFBFB",
+		borderRadius: 5,
+		shadowColor: 'rgba(0,0,0,0.5)',
+		shadowOffset: {
+			width: 1,
+			height: 1,
+		},
+		shadowOpacity: 0.5,
+		elevation: 10,
+		padding: 20
 	},
 	odgovoriContainer: {
 		//display: "flex",
@@ -117,6 +133,13 @@ const styles = StyleSheet.create({
 	odgovoriText: {
 		textAlign: "center",
 		padding: 20,
+		backgroundColor: "#FBFBFB",
+		margin: 0
+	},
+	slika: {
+		marginTop: 40,
+		width: 200,
+		height: 200,
 	}
 })
 
