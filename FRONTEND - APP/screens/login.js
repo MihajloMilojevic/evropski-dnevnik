@@ -8,14 +8,20 @@ import Icon from 'react-native-vector-icons/Entypo';
 import CustomButton from "../components/customButton";
 import backSlika from "../assets/pozadine/loginBcg.png";
 import gornjaSlika from "../assets/slike/unlock.png";
-
+import MessageModal from "../components/messageModal";
 
 
 export default function Login({navigation}) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [passwordHidden, setPasswordHidden] = useState(true);
-	
+	const [modal, setModal] = useState({
+		show: false,
+		title: "",
+		message: "",
+		onPress: () => {}
+	})
+
 	const dispatch = useDispatch();
 	const host = useSelector(state => state.host)
 	const URL = host + "/api/users/login";
@@ -42,11 +48,23 @@ export default function Login({navigation}) {
 			if(data.ok)
 			{
 				dispatch(setUser({...data.user, token: data.token}))
-				Alert.alert("Uspeh", `Uspešno prijavljen kao ${data.user.username}`);
-				navigation.replace("app");
+				setModal({
+					title: "Uspeh",
+					message: `Uspešno prijavljen kao ${data.user.username}`,
+					show: true,
+					onPress: () => navigation.replace("app")
+				})
 			}
 			else
-				Alert.alert("Greška", data.message);
+				setModal({
+					title: "Greška",
+					message: data.message,
+					show: true,
+					onPress: () => setModal({
+						...modal,
+						show: false
+					})
+				})
 		} catch (error) {
 			console.error(error);
 		}
@@ -55,6 +73,8 @@ export default function Login({navigation}) {
 		navigation.replace("register")
 	}
 	return (
+		<>
+		<MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
 		<ImageBackground source={backSlika} resizeMode={"cover"} style={styles.container}>
 			<Image
 				style={styles.slika}
@@ -97,6 +117,7 @@ export default function Login({navigation}) {
 			><Text style={styles.register}>Registrujte se </Text></Pressable>
 			
 		</ImageBackground>
+		</>
 	);
 }
 const styles = StyleSheet.create({
