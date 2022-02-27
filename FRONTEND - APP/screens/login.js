@@ -89,7 +89,7 @@ export default function Login({navigation}) {
 			<Text style={styles.header}>Prijavite se na nalog</Text>
 			
 			<TextInput
-			placeholder={"mejl"}
+				placeholder={"mejl"}
 				style={styles.input}
 				keyboardType="email-address"
 				onChangeText={emailChange}
