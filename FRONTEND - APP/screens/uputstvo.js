@@ -20,7 +20,7 @@ export default function Uputstvo({navigation})
 	return (
 		<ImageBackground source={pozadina} resizeMode={"cover"} style={styles.container}>
 			<Text style={styles.naslov}>UPUTSTVO</Text>
-			<Text style={styles.tekst}>Kliknite na naslov u delu koji vas zanima da bi videli kako se koristi aplikacija</Text>
+			<Text style={styles.tekst}>Kliknite na naslov u delu koji Vas zanima</Text>
 			<CollapseUputstvo
 				title={"Početna strana"}
 				tekst={"Na početnoj strani pored dugmeta Uputstva možete videti i logo naše aplikacije..."}
@@ -45,6 +45,12 @@ export default function Uputstvo({navigation})
 				title={"Nazad"} 
 				onPress={() => {navigation.goBack()}}
 				containerStyle={styles.dugme}
+				textStyle = {styles.dugmeTekst}
+			/>
+			<CustomButton 
+				title={"O aplikaciji"}
+				containerStyle={styles.dugme2}
+				textStyle={styles.dugme2Tekst}
 			/>
 		</ImageBackground>
 	);
@@ -58,6 +64,10 @@ const styles = StyleSheet.create({
 	},
 	dugme: {
 		alignSelf: "center",
+		width: 100
+	},
+	dugmeTekst: {
+		textAlign: "center"
 	},
 	naslov: {
 		fontSize: 24,
@@ -69,5 +79,15 @@ const styles = StyleSheet.create({
 		paddingLeft: 40,
 		paddingRight: 40,
 		marginBottom: 20,
+	},
+	dugme2: {
+		width: 100,
+		borderWidth: 2,
+		borderColor: "#3268B8",
+		backgroundColor: "transparent"
+	},
+	dugme2Tekst: {
+		textAlign: "center",
+		color: "#000"
 	}
 })
