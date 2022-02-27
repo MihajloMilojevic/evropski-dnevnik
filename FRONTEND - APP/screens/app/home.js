@@ -29,6 +29,14 @@ export default function Home({navigation})
 			<CustomButton
 				title={"Uputstvo"}
 				onPress={() => navigation.navigate("uputstvo")}
+				containerStyle={styles.dugme}
+				textStyle={styles.dugmeTekst}
+			/>
+			<CustomButton
+				title={"O aplikaciji"}
+				onPress={() => navigation.navigate("o_aplikaciji")}
+				containerStyle={styles.dugme2}
+				textStyle={styles.dugme2Tekst}
 			/>
 			{/*<CustomButton
 				title={"Izloguj se"}
@@ -62,5 +70,23 @@ const styles = StyleSheet.create({
 		color: "#000",
 		textAlign: "center",
 		padding: 30,
-	}
+	},
+	dugme2: {
+		width: 100,
+		borderWidth: 2,
+		borderColor: "#3268B8",
+		backgroundColor: "transparent"
+	},
+	dugme2Tekst: {
+		textAlign: "center",
+		color: "#000"
+	},
+	
+	dugme: {
+		alignSelf: "center",
+		width: 100
+	},
+	dugmeTekst: {
+		textAlign: "center"
+	},
 })

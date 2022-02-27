@@ -47,11 +47,6 @@ export default function Uputstvo({navigation})
 				containerStyle={styles.dugme}
 				textStyle = {styles.dugmeTekst}
 			/>
-			<CustomButton 
-				title={"O aplikaciji"}
-				containerStyle={styles.dugme2}
-				textStyle={styles.dugme2Tekst}
-			/>
 		</ImageBackground>
 	);
 }
@@ -64,10 +59,6 @@ const styles = StyleSheet.create({
 	},
 	dugme: {
 		alignSelf: "center",
-		width: 100
-	},
-	dugmeTekst: {
-		textAlign: "center"
 	},
 	naslov: {
 		fontSize: 24,
@@ -80,14 +71,4 @@ const styles = StyleSheet.create({
 		paddingRight: 40,
 		marginBottom: 20,
 	},
-	dugme2: {
-		width: 100,
-		borderWidth: 2,
-		borderColor: "#3268B8",
-		backgroundColor: "transparent"
-	},
-	dugme2Tekst: {
-		textAlign: "center",
-		color: "#000"
-	}
 })
