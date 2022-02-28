@@ -62,7 +62,6 @@ export default function Leaderboard({ navigation }) {
             <FlatList
                 style={{
                     width: "100%",
-                    marginBottom: 30,
                 }}
                 data={data}
                 renderItem={renderItem}
@@ -85,7 +84,7 @@ const styles = StyleSheet.create({
         color: "black",
         fontSize: 50,
         fontWeight: "bold",
-        fontSize: 24,
+        fontStyle: "italic",
         marginTop: 20,
     }
 })

@@ -1,8 +1,8 @@
 import { Modal, Text, StyleSheet, View, useWindowDimensions, Image, ImageBackground, ScrollView } from "react-native";
 import CustomButton from "./customButton";
-import trophy from "../assets/slike/trophy.png"
+import WA from "../assets/slike/wrongAnswer.png"
 
-export default function VictoryModal({title, messages, scrollMessage, onPress, showModal}) {
+export default function LoseModal({title, messages, scrollMessage, onPress, showModal}) {
     return (
         <Modal
             animationType="slide"
@@ -13,7 +13,7 @@ export default function VictoryModal({title, messages, scrollMessage, onPress, s
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
                   <ImageBackground
-                    source={trophy}
+                    source={WA}
                     style={styles.trophy}
                     resizeMode={"contain"}
                   />
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     },
     text: {
       fontSize: 16,
-      marginBottom: 10   
+      marginBottom: 10
     },
     hairline: {
         backgroundColor: '#3268B8',

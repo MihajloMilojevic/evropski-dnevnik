@@ -1,14 +1,42 @@
+import { useState } from "react";
 import { Alert, StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import Answer from "../../components/odgovor";
 import { useDispatch, useSelector } from 'react-redux';
 import {setUser} from "../../redux";
 import slika from "../../assets/slike/pitanje.png";
+import VictoryModal from "../../components/victoryModal";
+import LoadingModal from "../../components/loadingModal";
+import MessageModal from "../../components/messageModal";
+import LoseModal from "../../components/looseModal";
 
 function ImageQuiz({navigation, route}) {
 	
 	const host = useSelector(state => state.host);
 	const user = useSelector(state => state.user);
 	const dispatch = useDispatch();
+
+	const [loading, setLoading] = useState(false)
+	const [victoryModal, setVictoryModal] = useState({
+		show: false,
+		title: "",
+		messages: [],
+		scrollMessage: "",
+		onPress: () => {}
+	})
+	const [loseModal, setloseModal] = useState({
+		show: false,
+		title: "",
+		messages: [],
+		scrollMessage: "",
+		onPress: () => {}
+	})
+	const [messageModal, setMessageModal] = useState({
+		show: false,
+		title: "",
+		message: "",
+		scrollMessage: null,
+		onPress: () => {}
+	})
 
 	const quiz = route.params.image;
 	const level = route.params.level;
@@ -18,30 +46,56 @@ function ImageQuiz({navigation, route}) {
 			{
 				(async () => {
 					try {
-					  const res = await fetch(host + "/api/users/level/pass/" + level, {
-						headers: {
-						  "Authorization": "Bearer " + user.token
+						setLoading(true)
+						const res = await fetch(host + "/api/users/level/pass/" + level, {
+							headers: {
+							"Authorization": "Bearer " + user.token
+							}
+						})
+						const json = await res.json();
+						setLoading(false)
+						if(json.ok) 
+						{
+							dispatch(setUser({...json.user, token: json.token}));
+							setVictoryModal({
+								title: "BRAVO",
+								messages: [
+									`Broj osvojenih poena: ${json.points}`,
+									`Tačan odgovor je: ${quiz.answers[quiz.correct]}`
+								],
+								show: true,
+								onPress: () => navigation.goBack()
+							})
 						}
-					  })
-					  const json = await res.json();
-					  if(json.ok) 
-						dispatch(setUser({...json.user, token: json.token}));
+						else
+							setMessageModal({
+								title: "Greška",
+								message: json.message,
+								show: true,
+								onPress: () => navigation.goBack()
+							})
 					} catch (error) {
-					  
+						setLoading(false)
+						setMessageModal({
+							title: "Greška",
+							message: "Došlo je do greške",
+							show: true,
+							onPress: () => navigation.goBack()
+						})
 					}
-				})()
-				Alert.alert("Tacno", "Pogodili ste", [{
-						text: "OK",
-						onPress: () => navigation.goBack()
-					}]);
+				  })()
 			}
 			else
-				Alert.alert("Pogrešno", "Promašili ste", [
-					{
-						text: "OK",
-						onPress: () => navigation.goBack()
-					}
-				]);
+			{
+				setloseModal({
+					title: "POGREŠNO",
+					messages: [
+						`Tačan odgovor je: ${quiz.answers[quiz.correct]}`
+					],
+					show: true,
+					onPress: () => navigation.goBack()
+				})
+			}
 		}
 	}
 	return (
@@ -50,6 +104,27 @@ function ImageQuiz({navigation, route}) {
 				source={slika}
 				style={styles.slika1}
 			/>
+			<MessageModal 
+				title={messageModal.title} 
+				message={messageModal.message} 
+				showModal={messageModal.show} 
+				onPress={messageModal.onPress}
+			/>
+			<VictoryModal 
+				title={victoryModal.title} 
+				messages={victoryModal.messages} 
+				showModal={victoryModal.show} 
+				onPress={victoryModal.onPress}
+				scrollMessage={victoryModal.scrollMessage}
+			/>
+			<LoseModal 
+				title={loseModal.title} 
+				messages={loseModal.messages} 
+				showModal={loseModal.show} 
+				onPress={loseModal.onPress}
+				scrollMessage={loseModal.scrollMessage}
+			/>
+			<LoadingModal showModal={loading}/>
 			<View style={styles.slikaContainer}>
 				<Image
 					source={{uri: host + quiz.image}}

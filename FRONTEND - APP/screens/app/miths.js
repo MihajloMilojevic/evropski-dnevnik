@@ -1,14 +1,41 @@
 import React, {useRef, useState, useEffect} from "react";
-import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert, Text, ImageBackground } from "react-native";
+import { View, Animated, StyleSheet, PanResponder, useWindowDimensions, Button, Alert, Text, ImageBackground, Image } from "react-native";
 import MithCard from "../../components/mithCard";
 import { useDispatch, useSelector } from 'react-redux';
 import {setUser} from "../../redux";
 import pozadina from "../../assets/pozadine/mithsBcg.png";
+import VictoryModal from "../../components/victoryModal";
+import LoadingModal from "../../components/loadingModal";
+import MessageModal from "../../components/messageModal";
+import LoseModal from "../../components/looseModal";
+import mithSwipe from "../../assets/slike/mithsSwipe.png"
 
 export default function Miths({navigation, route})
 {
 	const [mith, setMith] = useState(route.params.mith);
 	const level = route.params.level;
+	const [loading, setLoading] = useState(false)
+	const [victoryModal, setVictoryModal] = useState({
+		show: false,
+		title: "",
+		messages: [],
+		scrollMessage: "",
+		onPress: () => {}
+	})
+	const [loseModal, setloseModal] = useState({
+		show: false,
+		title: "",
+		messages: [],
+		scrollMessage: "",
+		onPress: () => {}
+	})
+	const [messageModal, setMessageModal] = useState({
+		show: false,
+		title: "",
+		message: "",
+		scrollMessage: "",
+		onPress: () => {}
+	})
 
 	const host = useSelector(state => state.host);
 	const user = useSelector(state => state.user);
@@ -22,32 +49,59 @@ export default function Miths({navigation, route})
 		let naslov;
 		if(guess === mith.correct)
 		{
-			naslov = "Tačno";
 			(async () => {
                 try {
-                  const res = await fetch(host + "/api/users/level/pass/" + level, {
-                    headers: {
-                      "Authorization": "Bearer " + user.token
-                    }
-                  })
-                  const json = await res.json();
-                  if(json.ok) 
-                    dispatch(setUser({...json.user, token: json.token}));
+					setLoading(true)
+                	const res = await fetch(host + "/api/users/level/pass/" + level, {
+						headers: {
+						"Authorization": "Bearer " + user.token
+						}
+					})
+					const json = await res.json();
+					setLoading(false)
+					if(json.ok) 
+					{
+						dispatch(setUser({...json.user, token: json.token}));
+						setVictoryModal({
+							title: "BRAVO",
+							messages: [
+								`Broj osvojenih poena: ${json.points}`,
+								`Ovo ${mith.correct ? "jeste" : "nije"} mit`
+							],
+							scrollMessage: mith.description,
+							show: true,
+							onPress: () => navigation.goBack()
+						})
+					}
+					else {
+						setMessageModal({
+							title: "Greška",
+							message: json.message,
+							show: true,
+							onPress: () => navigation.goBack()
+						})
+					}
                 } catch (error) {
-                  
+					setLoading(false)
+					setMessageModal({
+						title: "Greška",
+						message: "Došlo je do greške",
+						show: true,
+						onPress: () => navigation.goBack()
+					})
                 }
               })()
 		}
 		else
-			naslov = "Pogrešno";
-		Alert.alert(naslov, 
-			`Ovaj mit je ${mith.correct ? "istinit" : "lažan"}
-			${mith.description}`,[
-			{
-				text: "OK",
+			setloseModal({
+				title: "POGREŠNO",
+				messages: [
+					`Ovo ${mith.correct ? "jeste" : "nije"} mit`
+				],
+				scrollMessage: mith.description,
+				show: true,
 				onPress: () => navigation.goBack()
-			}
-		]);
+			})
 		
 	}
 	
@@ -85,7 +139,14 @@ export default function Miths({navigation, route})
 			flexGrow: 1,
 			justifyContent: "center",
 			alignItems: "center",
-			backgroundColor: "dodgerblue",
+			//backgroundColor: "dodgerblue",
+		},
+		swipe: {
+			width: 200,
+			height: 150,
+			position: "absolute",
+			bottom: -25,
+			zIndex: 2,
 		},
 		card: {
 			/*shadowRadius: translate.interpolate({
@@ -93,9 +154,11 @@ export default function Miths({navigation, route})
 				outputRange: [100, 0, 100],
 				extrapolate: "clamp"
 			}),*/
+
+			zIndex: 1,
 			backgroundColor: translate.interpolate({
 				inputRange: [-dimensions.width / 2, 0, dimensions.width / 2],
-				outputRange: ["#ff5b4f", "white", "#41f26e"],
+				outputRange: ["#41f26e", "white", "#ff5b4f"],
 				extrapolate: "clamp"
 			}),
 			borderRadius: 20,
@@ -115,11 +178,39 @@ export default function Miths({navigation, route})
 	else
 		return (
 		<ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>
+			
+			<Image 
+					source={mithSwipe}
+					style={styles.swipe}
+					resizeMode={"contain"}
+			/>
+			<MessageModal 
+				title={messageModal.title} 
+				message={messageModal.message} 
+				showModal={messageModal.show} 
+				onPress={messageModal.onPress}
+			/>
+			<VictoryModal 
+				title={victoryModal.title} 
+				messages={victoryModal.messages} 
+				showModal={victoryModal.show} 
+				onPress={victoryModal.onPress}
+				scrollMessage={victoryModal.scrollMessage}
+			/>
+			<LoseModal 
+				title={loseModal.title} 
+				messages={loseModal.messages} 
+				showModal={loseModal.show} 
+				onPress={loseModal.onPress}
+				scrollMessage={loseModal.scrollMessage}
+			/>
+			<LoadingModal showModal={loading}/>
 			<Animated.View 
 				{...panResponder.panHandlers}
 				style={styles.card}
 			>
 				<MithCard title={mith.title}/>
 			</Animated.View>
+			
 		</ImageBackground>);
 }

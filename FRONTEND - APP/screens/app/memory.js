@@ -13,6 +13,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setUser} from "../../redux";
 import pozadina from "../../assets/pozadine/kvizBcg.png";
 import Logo from "../../assets/slike/logo1.png";
+import VictoryModal from "../../components/victoryModal";
+import LoadingModal from "../../components/loadingModal";
+import MessageModal from "../../components/messageModal";
 
 class Memory extends React.Component {
 
@@ -23,7 +26,22 @@ class Memory extends React.Component {
     this.urls = [...this.props.route.params.memory.urls];
     this.state = {
       table: this.copyTable(this.props.route.params.memory.table),
-      open: []
+      open: [],
+      victoryModal: {
+        show: false,
+        title: "",
+        messages: [],
+        scrollMessage: "",
+        onPress: () => {}
+      },
+      messageModal: {
+        show: false,
+        title: "",
+        message: "",
+        scrollMessage: null,
+        onPress: () => {}
+      },
+      loading: false
     }
 
     this.copyTable = this.copyTable.bind(this);
@@ -154,17 +172,40 @@ class Memory extends React.Component {
                   })
                   const json = await res.json();
                   if(json.ok) 
+                  {
                     this.props.dispatch(setUser({...json.user, token: json.token}));
+                    this.setState({
+                      victoryModal: {
+                        title: "BRAVO",
+                        messages: [
+                          `Broj osvojenih poena: ${json.points}`,
+                          `Uspešno ste spojili sve parove`
+                        ],
+                        show: true,
+                        onPress: () => this.props.navigation.goBack()
+                      }
+                    })
+                  }
+                  else
+                    this.setState({
+                      messageModal: {
+                        title: "Greška",
+                        message: json.message,
+                        show: true,
+                        onPress: () => this.props.navigation.goBack()
+                      }
+                    })
                 } catch (error) {
-                  
+                  this.setState({
+                    messageModal: {
+                      title: "Greška",
+                      message: "Došlo je do greške",
+                      show: true,
+                      onPress: () => this.props.navigation.goBack()
+                    }
+                  })
                 }
               })()
-              Alert.alert("Pobeda", "Pobedio si", [
-                {
-                  text: "OK",
-                  onPress: () => this.props.navigation.goBack()
-                }
-              ]);
             }
           })
           return;
@@ -182,7 +223,22 @@ class Memory extends React.Component {
 
     return (
           <Grid style={this.styles.container}>
+            <MessageModal 
+				title={this.state.messageModal.title} 
+				message={this.state.messageModal.message} 
+				showModal={this.state.messageModal.show} 
+				onPress={this.state.messageModal.onPress}
+			/>
+			<VictoryModal 
+				title={this.state.victoryModal.title} 
+				messages={this.state.victoryModal.messages} 
+				showModal={this.state.victoryModal.show} 
+				onPress={this.state.victoryModal.onPress}
+				scrollMessage={this.state.victoryModal.scrollMessage}
+			/>
+			<LoadingModal showModal={this.state.loading}/>
           {
+            
             this.table.map((row, rowIndex) => (
               <Row key={"row-" + rowIndex}>
                 {
