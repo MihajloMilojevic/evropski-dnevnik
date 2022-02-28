@@ -54,6 +54,7 @@ export default function Register({navigation}) {
 			setLoading(false)
 			if(data.ok)
 			{
+				dispatch(setUser({...data.user, token: data.token}))
 				setModal({
 					title: "Uspeh",
 					message: "Uspešno ste se registrovali",

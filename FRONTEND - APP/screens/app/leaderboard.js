@@ -68,7 +68,7 @@ export default function Leaderboard({ navigation }) {
             <FlatList
                 style={{
                     width: "100%",
-                    marginBottom: 50
+                    marginBottom: 75
                 }}
                 data={data}
                 renderItem={renderItem}
