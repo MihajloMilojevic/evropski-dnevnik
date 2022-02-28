@@ -10,7 +10,7 @@ const removeUser = () => {
 }
 
 const initialState = {
-	host: "https://evropski-dnevnik-dev.herokuapp.com",
+	host: "https://euroquiz.herokuapp.com",
 	user: {
 		username: "",
 		_id: "",
