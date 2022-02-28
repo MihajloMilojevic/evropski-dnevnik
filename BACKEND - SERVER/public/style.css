@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,800;1,700&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100vh;
+	display: flex;
+	background-color: #ECECEC;
+	font-family:  "Poppins";
+}
+.container {
+	flex: 1;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+}
+.slika-container {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.slika-container img {
+	width: 80%;
+	height: 80%;
+	object-fit: contain;
+}
+.text {
+	font-size: 4em;
+	font-weight: bolder;
+	text-align: center;
+	padding-inline: 1rem;
+}
+.text-malo {
+	font-weight: normal;
+	font-size: 2em;
+}
+.download-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.download-button {
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+	aspect-ratio: 1;
+	box-shadow: 0 0 30px #00000050;
+	border-radius: 20px;
+	margin-bottom: 2em;
+	margin-top: 2em;
+}
+.download-button img {
+	width: 90%;
+	height: 90%;
+	object-fit: cover;
+}
+.link {
+	color: #3268B8 !important;
+}
+.link:hover {
+	color: #AF9E00 !important;
+}
+.video-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.video {
+	background-color: #00000025;
+	border-radius: 20px;
+	width: 50%;
+	height: 80%;
+}
+
+@media (max-width: 769px) and (orientation: portrait) {
+	.container {
+		grid-template-rows: 1fr 1fr;
+		grid-template-columns: 1fr;
+	}
+	.text {
+		font-size: 2em;
+	}
+	.text-malo {
+		font-weight: normal;
+		font-size: 1em;
+	}
+	.video {
+		background-color: #00000025;
+		border-radius: 20px;
+		width: 80%;
+		height: 80%;
+	}
+}
