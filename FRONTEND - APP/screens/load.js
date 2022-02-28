@@ -93,11 +93,11 @@ const styles = StyleSheet.create({
 	},
 	dugme1: {
 		backgroundColor: '#3268B8',
-		width: 100
+		width: 200
 	},
 	dugme2: {
 		backgroundColor: '#EBEBEB',
-		width: 100,
+		width: 200,
 		borderColor: "#3268B8",
 		borderWidth: 2
 	},

@@ -1,4 +1,4 @@
-import { Pressable, ImageBackground, Text, StyleSheet, Alert } from "react-native";
+import { Pressable, ImageBackground, Text, StyleSheet, Alert, Modal } from "react-native";
 import {passed, current, locked} from "../assets/zvezde";
 import {useSelector} from "react-redux";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -38,7 +38,10 @@ export default function LevelSelectItem({item, navigation, level, setLoading, se
 					title: "Zaključano",
 					message: "Prvo pređite sve prethodne nivoe",
 					show: true,
-					onPress: () => {}
+					onPress: () => {
+						setModal({
+							show: false,
+					})}
 				})
 				return;
 			}

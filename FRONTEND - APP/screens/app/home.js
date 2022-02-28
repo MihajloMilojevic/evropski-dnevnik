@@ -25,7 +25,7 @@ export default function Home({navigation})
 				source={gornjaSlika}
 			></Image>
 			<Text style={styles.zdravo}>Zdravo, {user.username}</Text>
-			<Text style={styles.tekst}>Koristi ikonice kako bi došao do: početne, kviza, liste igrača i informacija o profilu</Text>
+			
 			<CustomButton
 				title={"Uputstvo"}
 				onPress={() => navigation.navigate("uputstvo")}
@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
 	zdravo: {
 		color: "#000",
 		textAlign: "center",
-		fontSize: 24,
+		fontSize: 30,
 		fontWeight: "bold",
+		marginVertical: 30
 	},
 	slika: {
 		width: 200,
@@ -70,21 +71,22 @@ const styles = StyleSheet.create({
 		color: "#000",
 		textAlign: "center",
 		padding: 30,
+		fontSize: 30,
 	},
 	dugme2: {
-		width: 100,
+		width: 200,
 		borderWidth: 2,
 		borderColor: "#3268B8",
-		backgroundColor: "transparent"
+		backgroundColor: "#EBEBEB"
 	},
 	dugme2Tekst: {
 		textAlign: "center",
-		color: "#000"
+		color: "#3268B8"
 	},
 	
 	dugme: {
 		alignSelf: "center",
-		width: 100
+		width: 200
 	},
 	dugmeTekst: {
 		textAlign: "center"

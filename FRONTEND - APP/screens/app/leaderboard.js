@@ -55,10 +55,16 @@ export default function Leaderboard({ navigation }) {
     }, [])
 
     return (
-        <ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>
+        <View style={styles.container}>
+            {/*<ImageBackground style={styles.container} source={pozadina} resizeMode={"cover"}>*/}
             <MessageModal title={modal.title} message={modal.message} showModal={modal.show} onPress={modal.onPress}/>
             <LoadingModal showModal={loading}/>
-            <Text style={styles.text}>TOP LISTA</Text>
+            <Text style={styles.title}>TOP LISTA</Text>
+            <View  style={[styles.itemContainer]}>
+                <Text style={[styles.rank, styles.text, styles.rankTekst]}>Rank</Text>
+                <Text style={[styles.name, styles.text]}>Igrač</Text>
+                <Text style={[styles.points, styles.text, styles.pointsTekst]}>Poeni</Text>
+		    </View>
             <FlatList
                 style={{
                     width: "100%",
@@ -68,7 +74,8 @@ export default function Leaderboard({ navigation }) {
                 renderItem={renderItem}
                 keyExtractor={item => item._id}
             />
-        </ImageBackground>
+         {/*</ImageBackground>*/}
+        </View>
     )
 }
 
@@ -81,11 +88,45 @@ const styles = StyleSheet.create({
         paddingTop: StatusBar.currentHeight
         //backgroundColor: "dodgerblue",
     },
-    text: {
+    itemContainer: {
+		display: "flex",
+		flexDirection: "row",
+		minHeight: 75,
+		justifyContent: "center",
+		//borderWidth: 1,
+		//borderRadius: 5,
+		//marginLeft: 10,
+		//marginRight: 10,
+		//marginTop: 5,
+		//marginBottom: 5,
+		//backgroundColor: "#f8f9fa",
+		width: "100%"
+	},
+    title: {
         color: "black",
         fontSize: 50,
         fontWeight: "bold",
-        fontStyle: "italic",
+        //fontStyle: "italic",
         marginTop: 20,
-    }
+    },
+    text: {
+		alignSelf: "center",
+		textAlign: "center",
+		fontSize: 16,
+		color: "#000"
+	},
+	rank: {
+		flex: 1,
+	},
+    rankTekst: {
+        fontWeight: "bold",
+    },
+	name: {
+		flex: 2,
+		fontWeight: "bold"
+	},
+	points: {
+		flex: 1,
+		fontWeight: "bold"
+	},
 })
