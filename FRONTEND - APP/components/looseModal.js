@@ -20,7 +20,7 @@ export default function LoseModal({title, messages, scrollMessage, onPress, show
                     <Text style={styles.title}>{title}</Text>
                     <View style={styles.hairline} />
                     {
-                      messages.map(message => <Text style={styles.text}>{message}</Text>)
+                      messages.map((message, ind) => <Text key={ind} style={styles.text}>{message}</Text>)
                     }
                     {
                       scrollMessage ?
