@@ -29,9 +29,10 @@ server.use(cors());
 server.use(xss());
 
 server.use(express.static("public"))
+// server.use(express.static("forme"))
 server.use("/api/users", userRouter);
 server.use("/api/levels", levelRouter);
-server.use("/api/games", gamesRouter);
+// server.use("/api/games", gamesRouter);
 
 server.get("/", (req, res) => res.send("EURO QUIZ"))
 
