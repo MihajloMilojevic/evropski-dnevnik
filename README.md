@@ -12,7 +12,6 @@ Sa ovom aplikacijom smo osvojili prvo mesto u multimedijalnoj kategoriji.
 
 ## Evo kako aplikacija izgleda:
 
-<video controls>
-    <source src="./BACKEND - SERVER/public/preview.mp4" type="video/mp4">
-    Vaš pregledač ne podržava puštanje videa
-</video>
+
+https://github.com/MihajloMilojevic/evropski-dnevnik/assets/80645946/4056f8e6-124f-4599-a670-4daf97380db4
+
