@@ -31,14 +31,14 @@ body {
 	object-fit: contain;
 }
 .text {
-	font-size: 4em;
+	font-size: 3em;
 	font-weight: bolder;
 	text-align: center;
 	padding-inline: 1rem;
 }
 .text-malo {
 	font-weight: normal;
-	font-size: 2em;
+	font-size: 1.5em;
 }
 .download-container {
 	display: flex;
@@ -49,7 +49,7 @@ body {
 	align-items: center;
 }
 .download-button {
-	width: 50%;
+	width: 30%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
